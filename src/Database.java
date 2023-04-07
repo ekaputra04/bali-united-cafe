@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Database {
     private ArrayList<Menu> daftarMenu = new ArrayList<Menu>();
     private ArrayList<Pelanggan> daftarPelanggan = new ArrayList<Pelanggan>();
