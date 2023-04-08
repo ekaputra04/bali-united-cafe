@@ -1,8 +1,9 @@
 import java.util.*;
 
 public class Database {
+    
     private ArrayList<Menu> daftarMenu = new ArrayList<Menu>();
-    private ArrayList<Pelanggan> daftarPelanggan = new ArrayList<Pelanggan>();
+    private ArrayList<User> daftarPelanggan = new ArrayList<User>();
     private ArrayList<Pesanan> daftarPesanan = new ArrayList<Pesanan>();
     private ArrayList<Pembayaran> daftarPembayaran = new ArrayList<Pembayaran>();
 
@@ -14,11 +15,11 @@ public class Database {
         return daftarMenu;
     }
 
-    public void tambahPelanggan(Pelanggan pelanggan) {
+    public void tambahPelanggan(User pelanggan) {
         daftarPelanggan.add(pelanggan);
     }
 
-    public ArrayList<Pelanggan> getDaftarPelanggan() {
+    public ArrayList<User> getDaftarPelanggan() {
         return daftarPelanggan;
     }
 

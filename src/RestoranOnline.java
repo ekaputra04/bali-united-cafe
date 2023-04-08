@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class RestoranOnline {
     private Database database;
 
@@ -10,7 +12,7 @@ public class RestoranOnline {
         System.out.println("Daftar Menu:");
         for (int i = 0; i < daftarMenu.size(); i++) {
             Menu menu = daftarMenu.get(i);
-            System.out.println((i+1) + ". " + menu.getNama() + " - Rp" + menu.getHarga());
+            System.out.println((i+1) + ". " + menu.getNamaMenu() + " - Rp" + menu.getHarga());
         }
     }
 
