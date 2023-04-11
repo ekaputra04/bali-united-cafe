@@ -25,7 +25,5 @@ public class User {
     
     public String getAlamat() {
         return alamat;
-    }
-
-    
+    }    
 }

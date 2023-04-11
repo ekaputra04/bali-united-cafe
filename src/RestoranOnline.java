@@ -12,11 +12,11 @@ public class RestoranOnline {
         System.out.println("Daftar Menu:");
         for (int i = 0; i < daftarMenu.size(); i++) {
             Menu menu = daftarMenu.get(i);
-            System.out.println((i+1) + ". " + menu.getNamaMenu() + " - Rp" + menu.getHarga());
+            System.out.println((i+1) + ". " + menu.getNama() + " - Rp" + menu.getHarga());
         }
     }
 
-    public void terimaPesanan(Pelanggan pelanggan, Pesanan pesanan) {
+    public void terimaPesanan(User pelanggan, Pesanan pesanan) {
         database.tambahPelanggan(pelanggan);
         database.tambahPesanan(pesanan);
         System.out.println("Pesanan telah diterima.");
@@ -37,11 +37,11 @@ public class RestoranOnline {
     }
 
     public void tampilkanDaftarPelanggan() {
-        ArrayList<Pelanggan> daftarPelanggan = database.getDaftarPelanggan();
+        ArrayList<User> daftarPelanggan = database.getDaftarPelanggan();
         System.out.println("Daftar Pelanggan:");
         for (int i = 0; i < daftarPelanggan.size(); i++) {
-            Pelanggan pelanggan = daftarPelanggan.get(i);
-            System.out.println((i+1) + ". " + pelanggan.getNama() + " - " + pelanggan.getAlamat() + " - " + pelanggan.getNoTelp());
+            User pelanggan = daftarPelanggan.get(i);
+            System.out.println((i+1) + ". " + pelanggan.getUsername() + " - " + pelanggan.getAlamat());
         }
     }
 

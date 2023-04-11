@@ -15,7 +15,7 @@ public class Pesanan {
         return jumlah;
     }
 
-    public int getTotalHarga() {
-        return menu.getHarga() * jumlah;
+    public int getTotalHarga(int index_harga) {
+        return menu.getHarga(index_harga) * jumlah;
     }
 }

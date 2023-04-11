@@ -14,5 +14,6 @@ public class ClearConsole {
         } catch (Exception e) {
             System.out.println("Terjadi kesalahan saat membersihkan konsol.");
         }
+        input.close();
     }
 }
