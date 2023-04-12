@@ -3,16 +3,12 @@ import java.util.*;
 public class RestoranOnline {
     private Database database;
 
-    public RestoranOnline(Database database) {
-        this.database = database;
-    }
-
     public void tampilkanMenu() {
         ArrayList<Menu> daftarMenu = database.getDaftarMenu();
         System.out.println("Daftar Menu:");
         for (int i = 0; i < daftarMenu.size(); i++) {
             Menu menu = daftarMenu.get(i);
-            System.out.println((i+1) + ". " + menu.getNama() + " - Rp" + menu.getHarga());
+            System.out.println((i+1) + ". " + menu.getNama(i) + " - Rp" + menu.getHarga(i));
         }
     }
 
@@ -50,7 +46,7 @@ public class RestoranOnline {
         System.out.println("Daftar Pembayaran:");
         for (int i = 0; i < daftarPembayaran.size(); i++) {
             Pembayaran pembayaran = daftarPembayaran.get(i);
-            System.out.println((i+1) + ". " + pembayaran.getPesanan().getMenu().getNama() + " x" + pembayaran.getPesanan().getJumlah() + " - Rp" + pembayaran.getPesanan().getTotalHarga() + " - Bayar Rp" + pembayaran.getJumlahUang() + " - Kembalian Rp" + pembayaran.getKembalian());
+            System.out.println((i+1) + ". " + pembayaran.getPesanan().getMenu().getNama(i) + " x" + pembayaran.getPesanan().getJumlah() + " - Rp" + pembayaran.getPesanan().getTotalHarga() + " - Bayar Rp" + pembayaran.getJumlahUang() + " - Kembalian Rp" + pembayaran.getKembalian());
         }
     }
 }
