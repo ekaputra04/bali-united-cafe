@@ -3,7 +3,7 @@ import java.util.*;
 public class ClearConsole {
     public static void clearConsole(){
         Scanner input = new Scanner(System.in);
-        String jeda = input.nextLine();
+        input.nextLine();
         try {
             if (System.getProperty("os.name").contains("Windows")) {
                 new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();

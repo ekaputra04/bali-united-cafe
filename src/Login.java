@@ -1,8 +1,8 @@
 import java.util.*;
 
-import javax.lang.model.util.ElementScanner6;
-
 public class Login {
+    
+    private static Scanner input = new Scanner(System.in);
 
     public static void login(Database database) {
         int ruleUser;
@@ -34,7 +34,7 @@ public class Login {
     }
 
     public static void verifikasiAdmin(Database database) {
-        Scanner userInput = new Scanner(System.in);
+        VerifikasiAdmin verifikasiAdmin = new VerifikasiAdmin("src/FileAdmin.txt");
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                     VERIFIKASI ADMIN                    ||");
@@ -42,24 +42,24 @@ public class Login {
 
         // Input username dan password
         System.out.print("Masukkan Username: ");
-        String username = userInput.nextLine();
+        String username = input.nextLine();
         System.out.print("Masukkan Password: ");
-        String password = userInput.nextLine();
+        String password = input.nextLine();
 
         // Memeriksa apakah input username dan password cocok dengan data admin
 
-        if (username.equals("admin") && password.equals("admin123")){
-            System.out.println("Login Berhasil, Silahkan Lanjutkan Program");
+        if (verifikasiAdmin.verifyAdmin(username, password)) {
+            System.out.println("Verifikasi berhasil. Anda adalah admin.");
             loginAdmin(database);
         } else {
-            System.out.println("Login Gagal, Silahkan Kembali Ke Menu Utama");
+            System.out.println("Username atau password salah. Anda bukan admin.");
+            input.nextLine();
+            ClearConsole.clearConsole();
             login(database);
         }
     }
 
     public static void loginAdmin(Database database) {
-        ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
-
         while(true){
             int menuAdmin;
             Main.header();
@@ -84,13 +84,6 @@ public class Login {
             } else {
                 Login.login(database);
             }
-
-            // else if (menuAdmin == 4) {
-            //     login(database);
-            // } else if (menuAdmin == )
-            // else {
-            //     MenuAdmin.adminRestaurant(menuAdmin, database);
-            // }
         }
     }
 

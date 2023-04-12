@@ -15,53 +15,88 @@ public class Menu {
         return harga;
     }
 
-    // private String namaMenu[] = {
-    //     // Signature Ricebowl
-    //     "Nasi Ayam Sambal Geprek", "Nasi Ayam Sambal Matah", "Nasi Ayam Sambal Konslet",
-    //     "Nasi Kulit Ayam Sambal Geprek", "Nasi Kulit Ayam Sambal Matah", "Nasi Kulit Ayam Sambal Konslet",
-    //     // Rice Menu
-    //     "Nasi Ayam Goreng + Plecing Kangkung", "Nasi Ayam Bakar + Plecing Kangkung", "Nasi Chicken Teriyaki",
-    //     "Nasi Ayam Koloke", "Nasi Sop Iga", "Nasi Goreng Kampung", "Nasi Goreng Gila Bola", "Nasi Goreng Popmie",
-    //     "Nasi Capcay",
-    //     // Vegetable
-    //     "Capcay", "Cah Kangkung", "Plecing Kangkung", "Tahu Tempe Goreng", 
-    //     // Signature Bakso
-    //     "Mie Bakso Ayam", "Mie Bakso Sapi", "Bakso Ayam Pangsit Komplit", "Bakso Sapi Pangsit Komplit", 
-    //     // Western
-    //     "Chicken Burger", "Sandwich", "Hotdog", "Spaghetti Carbonara", "Spaghetti Bolognaise",
-    //     "Spaghetti Aglio o'llo", 
-    //     // Signature Indomie
-    //     "Indomie Telur Luncheon", "Indomie Telur Kornet", "Indomie Goreng Selera Semeton",
-    //     "Indomie Kuah Selera Semeton", "Indomie Ayam Crispy Sambal Matah", "Indomie Ayam Geprek Tridatu",
-    //     "Indomie Nendang Banget", "Indomie Nyemek", 
-    //     // Drink
-    //     "Creamy Latte", "Cappucino", "Black Coffee Torabika", "Black Tea", "Lemon Tea", "Lychee Tea", "Teh Tarik",
-    //     "Beer Guinness", "Milkshake", "Tridatu Mocktails", 
-    //     // Warming Up
-    //     "Friench Fries", "Crazy Friench Fries", "Chicken Wing", "Chicken Luncheon", "Kacang Kapri", "Tahu Krispi",
-    //     "Tempe Mendoan", "Roti Bakar Coklat", "Roti Bakar Keju", "Roti Bakar Coklat Keju", "Roti Bakar Gula",
-    //     "Roti Bakar Telur Kornet", "Pisang Bakar Coklat", "Pisang Bakar Keju", "Pisang Bakar Coklat Keju"
-    // };
+    private String namaMenu[] = {
+        // Signature Ricebowl
+        "Nasi Ayam Sambal Geprek", "Nasi Ayam Sambal Matah", "Nasi Ayam Sambal Konslet",
+        "Nasi Kulit Ayam Sambal Geprek", "Nasi Kulit Ayam Sambal Matah", "Nasi Kulit Ayam Sambal Konslet",
+        // Rice Menu
+        "Nasi Ayam Goreng + Plecing Kangkung", "Nasi Ayam Bakar + Plecing Kangkung", "Nasi Chicken Teriyaki",
+        "Nasi Ayam Koloke", "Nasi Sop Iga", "Nasi Goreng Kampung", "Nasi Goreng Gila Bola", "Nasi Goreng Popmie",
+        "Nasi Capcay",
+        // Vegetable
+        "Capcay", "Cah Kangkung", "Plecing Kangkung", "Tahu Tempe Goreng", 
+        // Signature Bakso
+        "Mie Bakso Ayam", "Mie Bakso Sapi", "Bakso Ayam Pangsit Komplit", "Bakso Sapi Pangsit Komplit", 
+        // Western
+        "Chicken Burger", "Sandwich", "Hotdog", "Spaghetti Carbonara", "Spaghetti Bolognaise",
+        "Spaghetti Aglio o'llo", 
+        // Signature Indomie
+        "Indomie Telur Luncheon", "Indomie Telur Kornet", "Indomie Goreng Selera Semeton",
+        "Indomie Kuah Selera Semeton", "Indomie Ayam Crispy Sambal Matah", "Indomie Ayam Geprek Tridatu",
+        "Indomie Nendang Banget", "Indomie Nyemek", 
+        // Drink
+        "Creamy Latte", "Cappucino", "Black Coffee Torabika", "Black Tea", "Lemon Tea", "Lychee Tea", "Teh Tarik",
+        "Beer Guinness", "Milkshake", "Tridatu Mocktails", 
+        // Warming Up
+        "Friench Fries", "Crazy Friench Fries", "Chicken Wing", "Chicken Luncheon", "Kacang Kapri", "Tahu Krispi",
+        "Tempe Mendoan", "Roti Bakar Coklat", "Roti Bakar Keju", "Roti Bakar Coklat Keju", "Roti Bakar Gula",
+        "Roti Bakar Telur Kornet", "Pisang Bakar Coklat", "Pisang Bakar Keju", "Pisang Bakar Coklat Keju"
+    };
 
-    // private int harga[] = {
-    //     // Signature Ricebowl
-    //     26500, 25000, 25000, 20000, 20000, 20000,
-    //     // Rice Menu
-    //     30000, 30000, 25000, 26500, 45000, 25000, 26500, 25000, 20000,
-    //     // Vegetable
-    //     20000, 20000, 20000, 15000,
-    //     // Signature Bakso
-    //     20000, 22000, 23000, 25000,
-    //     // Western
-    //     20000, 25000, 24000, 23000, 23000, 20000,
-    //     // Signature Indomie
-    //     12000, 15000, 15000, 15000, 20000, 20000, 23000, 23000,
-    //     // Drink
-    //     12000, 12000, 12000, 5000, 5000, 5000, 15000, 30000, 18000, 20000,
-    //     // Warming Up
-    //     15000, 20000, 25000, 10000, 5000, 15000, 15000, 15000, 15000, 18000, 15000, 20000, 20000, 20000, 22000
-    // };
+    public String[] getNamaMenu() {
+        return namaMenu;
+    }
 
+    public void setHargaMenu(String[] namaMenu) {
+        this.namaMenu = namaMenu;
+    }
+
+    public String getNamaMenuAtIndex(int index) {
+        return namaMenu[index];
+    }
+
+    public void setNamaMenuAtIndex(int index, String value) {
+        namaMenu[index] = value;
+    }
+
+    private int hargaMenu[] = {
+        // Signature Ricebowl
+        26500, 25000, 25000, 20000, 20000, 20000,
+        // Rice Menu
+        30000, 30000, 25000, 26500, 45000, 25000, 26500, 25000, 20000,
+        // Vegetable
+        20000, 20000, 20000, 15000,
+        // Signature Bakso
+        20000, 22000, 23000, 25000,
+        // Western
+        20000, 25000, 24000, 23000, 23000, 20000,
+        // Signature Indomie
+        12000, 15000, 15000, 15000, 20000, 20000, 23000, 23000,
+        // Drink
+        12000, 12000, 12000, 5000, 5000, 5000, 15000, 30000, 18000, 20000,
+        // Warming Up
+        15000, 20000, 25000, 10000, 5000, 15000, 15000, 15000, 15000, 18000, 15000, 20000, 20000, 20000, 22000
+    };
+
+    public int getBanyakMenu() {
+        return hargaMenu.length;
+    }
+
+    public int[] getHargaMenu() {
+        return hargaMenu;
+    }
+
+    public void setHargaMenu(int[] hargaMenu) {
+        this.hargaMenu = hargaMenu;
+    }
+
+    public int getHargaMenuAtIndex(int index) {
+        return hargaMenu[index];
+    }
+
+    public void setHargaMenuAtIndex(int index, int value) {
+        hargaMenu[index] = value;
+    }
 
     // public static void tampilkanMenu() {
     //     System.out.println("=============================================================");

@@ -45,6 +45,7 @@ public class MenuAdmin {
     }
 
     public static void adminHapusRestaurant(Database database) {
+        restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                        MENU ADMIN                       ||");
