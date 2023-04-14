@@ -3,4 +3,3 @@ BU02,BU Cafe Jimbaran,Jimbaran
 BU03,BU Cafe Badung,Badung
 BU04,BU Cafe Singaraja,Singaraja
 BU05,BU Cafe Jakarta,Jakarta
-BU06,BU Cafe Bangli,Bangli

@@ -24,7 +24,7 @@ public class Database {
         daftarMenu.add(menu);
     }
 
-    public void hapushMenu() {
+    public void hapusMenu() {
         daftarMenu.clear();;
     }
 

@@ -3,6 +3,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Validasi {
+    // ANSI escape code untuk tulisan merah
+    private static String red = "\033[31m";
+    // ANSI escape code untuk mereset warna
+    private static String reset = "\033[0m";
+
     public static int validasiAngka (int paramBawah, int paramAtas){
         Scanner scanner = new Scanner(System.in);
         int angka;
@@ -10,7 +15,7 @@ public class Validasi {
         do {
             System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Input harus berupa angka! Silakan coba lagi.");
+                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset);
                 System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
                 scanner.next();
             }
@@ -27,7 +32,7 @@ public class Validasi {
         do {
             System.out.print("Masukkan angka : ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Input harus berupa angka! Silakan coba lagi.");
+                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset );
                 System.out.print("Masukkan angka : ");
                 scanner.next();
             }
@@ -55,5 +60,25 @@ public class Validasi {
             e.printStackTrace();
         }
         return isRestaurant;
+    }
+
+    public static boolean validasiMenu(String idMenu, String namaMenu) {
+        String fileName = "src/FileMenu.txt";
+        boolean isMenu = false;
+        try {
+            Scanner scanner = new Scanner(new File(fileName));
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] restaurantData = line.split(",");
+                if (restaurantData[0].equals(idMenu) || restaurantData[1].equals(namaMenu)) {
+                    isMenu = true;
+                    break;
+                }
+            }
+            scanner.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return isMenu;
     }
 }

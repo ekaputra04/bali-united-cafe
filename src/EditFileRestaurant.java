@@ -1,6 +1,10 @@
 import java.io.*;
 
 public class EditFileRestaurant {
+    // ANSI escape code untuk tulisan merah
+    private static String red = "\033[31m";
+    // ANSI escape code untuk mereset warna
+    private static String reset = "\033[0m";
 
     public static void bacaFileRestaurant(Database database) {
         database.hapusRestaurant();
@@ -22,7 +26,8 @@ public class EditFileRestaurant {
     
             reader.close();
         } catch (IOException e) {
-            System.out.println("Terjadi kesalahan saat membaca file FileRestaurant.txt");
+            System.out.println(red + "Terjadi kesalahan saat membaca file FileRestaurant.txt" + reset);
+            System.out.println("-------------------------------------------------------------");
             e.printStackTrace();
         }
     }
@@ -34,9 +39,11 @@ public class EditFileRestaurant {
             FileWriter writer = new FileWriter("src/FileRestaurant.txt", true);
             writer.write(id + "," + nama + "," + alamat + "\n");
             writer.close();
-            System.out.println("Data restoran berhasil disimpan.");
+            System.out.println(red + "Data restoran berhasil disimpan." + reset);
+            System.out.println("-------------------------------------------------------------");
         } catch (IOException e) {
-            System.out.println("Terjadi kesalahan saat menyimpan data restoran.");
+            System.out.println(red + "Terjadi kesalahan saat menyimpan data restoran." + reset);
+            System.out.println("-------------------------------------------------------------");
             e.printStackTrace();
         }
     }
@@ -76,16 +83,20 @@ public class EditFileRestaurant {
             if (inputFile.delete()) {
                 // mengubah nama file sementara menjadi nama file asli
                 if (tempFile.renameTo(inputFile)) {
-                    System.out.println("Data pada index " + indexToDelete + " berhasil dihapus");
+                    System.out.println(red + "Data pada index " + indexToDelete + " berhasil dihapus" + reset);
+                    System.out.println("-------------------------------------------------------------");
                 } else {
-                    System.out.println("Gagal mengubah nama file");
+                    System.out.println(red + "Gagal mengubah nama file" + reset);
+                    System.out.println("-------------------------------------------------------------");
                 }
             } else {
-                System.out.println("Gagal menghapus file");
+                System.out.println(red + "Gagal menghapus file" + reset);
+                System.out.println("-------------------------------------------------------------");
             }
 
         } catch (IOException e) {
-            System.out.println("Terjadi kesalahan: " + e.getMessage());
+            System.out.println(red + "Terjadi kesalahan: " + e.getMessage() + reset);
+            System.out.println("-------------------------------------------------------------");
         }
     }
 }

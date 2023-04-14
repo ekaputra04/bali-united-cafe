@@ -3,6 +3,10 @@ import java.util.*;
 public class Login {
 
     private static Scanner input = new Scanner(System.in);
+    // ANSI escape code untuk tulisan merah
+    private static String red = "\033[31m";
+    // ANSI escape code untuk mereset warna
+    private static String reset = "\033[0m";
 
     public static void login(Database database) {
         int ruleUser;
@@ -49,10 +53,12 @@ public class Login {
 
         // Memeriksa apakah input username dan password cocok dengan data admin
         if (verifikasiAdmin.verifyAdmin(username, password)) {
-            System.out.println("Verifikasi berhasil. Anda adalah admin.");
+            System.out.println(red + "Verifikasi berhasil. Anda adalah admin." + reset);
+            System.out.println("-------------------------------------------------------------");
             Login.loginAdmin(database);
         } else {
-            System.out.println("Username atau password salah. Anda bukan admin.");
+            System.out.println(red + "Username atau password salah. Anda bukan admin." + reset);
+            System.out.println("-------------------------------------------------------------");
             input.nextLine();
             ClearConsole.clearConsole();
             Login.login(database);
@@ -112,7 +118,8 @@ public class Login {
         nama = input.nextLine();
         System.out.print("Masukkan Alamat Anda : ");
         alamat = input.nextLine();
-        System.out.println("Selamat datang " + nama);
+        System.out.println(red + "Selamat datang " + nama + reset);
+        System.out.println("-------------------------------------------------------------");
         User pelanggan = new User(nama, alamat);
         database.tambahPelanggan(pelanggan);
         Login.loginCostumer(database);
