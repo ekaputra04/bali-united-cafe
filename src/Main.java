@@ -1,5 +1,3 @@
-import java.util.*;
-
 public class Main {
     public static void header() {
         ClearConsole.clearConsole();

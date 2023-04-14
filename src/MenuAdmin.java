@@ -3,9 +3,14 @@ import java.util.*;
 public class MenuAdmin {
 
     private static Scanner input = new Scanner(System.in);
+    private static EditFileRestaurant editFileRestaurant = new EditFileRestaurant();
+    private static EditFileMenu editFileMenu = new EditFileMenu();
     private static ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+    private static ArrayList<Menu> menus = new ArrayList<Menu>();
 
     public static void adminLihatRestaurant(Database database) {
+        restaurants.clear();
+        editFileRestaurant.bacaFileRestaurant(database);
         restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -19,9 +24,9 @@ public class MenuAdmin {
         } else {
             for (int i = 0; i < restaurants.size(); i++) {
                 System.out.println("Restaurant " + (i + 1) + ":");
-                System.out.println("Nama: " + restaurants.get(i).getName());
-                System.out.println("Alamat: " + restaurants.get(i).getAddress());
-                System.out.println();
+                System.out.println("Nama   : " + restaurants.get(i).getName());
+                System.out.println("Alamat : " + restaurants.get(i).getAddress());
+                System.out.println("-------------------------------------------------------------");
             }
         }
     }
@@ -29,6 +34,7 @@ public class MenuAdmin {
     public static void adminTambahRestaurant(Database database) {
         String name;
         String address;
+        // input.nextLine(); // Untuk menghilangkan Buffer
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                        MENU ADMIN                       ||");
@@ -40,11 +46,14 @@ public class MenuAdmin {
         System.out.print("Masukkan Alamat Restaurant: ");
         address = input.nextLine();
 
+        editFileRestaurant.isiFileRestaurant(name, address);
         Restaurant restaurantBaru = new Restaurant(name, address);
         database.tambahRestaurant(restaurantBaru);
     }
 
     public static void adminHapusRestaurant(Database database) {
+        restaurants.clear();
+        editFileRestaurant.bacaFileRestaurant(database);
         restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -67,7 +76,80 @@ public class MenuAdmin {
                 System.out.println("Nomor restaurant tidak valid.");
             } else {
                 restaurants.remove(index - 1);
+                editFileRestaurant.hapusFileRestaurant(index);
                 System.out.println("Restaurant berhasil dihapus.");
+            }
+        }
+    }
+
+    public static void adminLihatMenuRestaurant(Database database){
+        menus.clear();
+        editFileMenu.bacaFileMenu(database);
+        menus = database.getDaftarMenu();
+        Main.header();
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                        MENU ADMIN                       ||");
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                   Lihat Menu Restaurant                 ||");
+        System.out.println("=============================================================");
+        if (menus.isEmpty()) {
+            System.out.println("Belum ada menu.");
+        } else {
+            for (int i = 0; i < menus.size(); i++) {
+                System.out.println("Menu " + (i + 1) + ":");
+                System.out.println("Nama Menu : " + menus.get(i).getNama());
+                System.out.println("Harga     : Rp. " + menus.get(i).getHarga());
+                System.out.println("-------------------------------------------------------------");
+            }
+        }
+    }
+
+    public static void adminTambahMenuRestaurant(Database database){
+        String namaMenu;
+        int hargaMenu;
+        input.nextLine();
+        Main.header();
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                        MENU ADMIN                       ||");
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                  Tambah Menu Restaurant                 ||");
+        System.out.println("=============================================================");
+        System.out.print("Masukkan nama menu : ");
+        namaMenu = input.nextLine();
+        System.out.print("Masukkan harga menu : ");
+        hargaMenu = input.nextInt();
+        editFileMenu.isiFileMenu(namaMenu, hargaMenu);
+        Menu menuBaru = new Menu(namaMenu, hargaMenu);
+        database.tambahMenu(menuBaru);
+    }
+
+    public static void adminHapusMenuRestaurant(Database database){
+        menus.clear();
+        editFileMenu.bacaFileMenu(database);
+        menus = database.getDaftarMenu();
+        Main.header();
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                        MENU ADMIN                       ||");
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                   Hapus Menu Restaurant                 ||");
+        System.out.println("=============================================================");
+        if (menus.isEmpty()) {
+            System.out.println("Belum ada menu.");
+        } else {
+            for (int i = 0; i < menus.size(); i++) {
+                System.out.println("Menu " + (i + 1) + ":");
+                System.out.println("Nama Menu : " + menus.get(i).getNama());
+                System.out.println("Harga     : Rp. " + menus.get(i).getHarga());
+                System.out.println("-------------------------------------------------------------");
+            }
+            System.out.print("Masukkan nomor menu yang ingin dihapus: ");
+            int index = input.nextInt();
+            if (index < 1 || index > menus.size()) {
+                System.out.println("Nomor menu tidak valid.");
+            } else {
+                menus.remove(index - 1);
+                editFileMenu.hapusFileMenu(index);
+                System.out.println("Menu berhasil dihapus.");
             }
         }
     }

@@ -57,22 +57,16 @@ public class MenuCostumer {
             }
             Login.loginCostumer(database);
         } else if (menuCostumer == 2) {
+            EditFileMenu.isiFileMenu(database);
+            ArrayList<Menu> daftarMenu = new ArrayList<>();
+            daftarMenu = database.getDaftarMenu();
+            
             Main.header();
             System.out.println("||---------------------------------------------------------||");
             System.out.println("||                      MENU COSTUMER                      ||");
             System.out.println("||---------------------------------------------------------||");
             System.out.println("||                       Buat Pesanan                      ||");
             System.out.println("=============================================================");
-            
-            ArrayList<Menu> daftarMenu = new ArrayList<>();
-
-            // daftarMenu = database.getDaftarMenu();
-            
-            daftarMenu.add(new Menu("Nasi Goreng", 15000));
-            daftarMenu.add(new Menu("Mie Goreng", 12000));
-            daftarMenu.add(new Menu("Ayam Goreng", 10000));
-
-
             
             while (true) {
                 System.out.println("Daftar Menu:");

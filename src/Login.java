@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Login {
-    
+
     private static Scanner input = new Scanner(System.in);
 
     public static void login(Database database) {
@@ -47,7 +47,6 @@ public class Login {
         String password = input.nextLine();
 
         // Memeriksa apakah input username dan password cocok dengan data admin
-
         if (verifikasiAdmin.verifyAdmin(username, password)) {
             System.out.println("Verifikasi berhasil. Anda adalah admin.");
             loginAdmin(database);
@@ -60,29 +59,43 @@ public class Login {
     }
 
     public static void loginAdmin(Database database) {
-        while(true){
+        while (true) {
             int menuAdmin;
             Main.header();
             System.out.println("||---------------------------------------------------------||");
             System.out.println("||                         MENU ADMIN                      ||");
             System.out.println("||---------------------------------------------------------||");
             System.out.println("|| Silahkan Pilih Menu Program:                            ||");
-            System.out.println("|| [1] Lihat Restaurant                                    ||");
-            System.out.println("|| [2] Tambah Restaurant                                   ||");
-            System.out.println("|| [3] Hapus Restaurant                                    ||");
-            System.out.println("|| [4] Kembali ke Login                                    ||");
+            System.out.println("|| [1] Lihat Daftar Restaurant                             ||");
+            System.out.println("|| [2] Tambah Daftar Restaurant                            ||");
+            System.out.println("|| [3] Hapus Daftar Restaurant                             ||");
+            System.out.println("|| [4] Lihat Menu Restaurant                               ||");
+            System.out.println("|| [5] Tambah Menu Restaurant                              ||");
+            System.out.println("|| [6] Hapus Menu Restaurant                               ||");
+            System.out.println("|| [7] Kembali ke Login                                    ||");
+            System.out.println("||---------------------------------------------------------||");
+            System.out.println("|| [8] Keluar Program                                      ||");
             System.out.println("=============================================================");
             System.out.println("Masukkan pilihan Anda : ");
-            menuAdmin = Validasi.validasiAngka(1, 4);
+            menuAdmin = Validasi.validasiAngka(1, 8);
 
-            if (menuAdmin == 1){
+            if (menuAdmin == 1) {
                 MenuAdmin.adminLihatRestaurant(database);
             } else if (menuAdmin == 2) {
                 MenuAdmin.adminTambahRestaurant(database);
             } else if (menuAdmin == 3) {
                 MenuAdmin.adminHapusRestaurant(database);
-            } else {
+            } else if (menuAdmin == 4) {
+                MenuAdmin.adminLihatMenuRestaurant(database);
+            } else if (menuAdmin == 5) {
+                MenuAdmin.adminTambahMenuRestaurant(database);
+            } else if (menuAdmin == 6) {
+                MenuAdmin.adminHapusMenuRestaurant(database);
+            } else if (menuAdmin == 7) {
+                ClearConsole.clearConsole();
                 Login.login(database);
+            } else {
+                System.exit(0);
             }
         }
     }
@@ -98,12 +111,17 @@ public class Login {
         System.out.println("|| [2] Buat Pesanan                                        ||");
         System.out.println("|| [3] Lihat Pesanan                                       ||");
         System.out.println("|| [4] Kembali ke Login                                    ||");
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("|| [5] Keluar Program                                      ||");
         System.out.println("=============================================================");
         System.out.println("Masukkan pilihan Anda : ");
-        menuCostumer = Validasi.validasiAngka(1, 4);
+        menuCostumer = Validasi.validasiAngka(1, 5);
 
         if (menuCostumer == 4) {
+            ClearConsole.clearConsole();
             login(database);
+        } else if (menuCostumer == 5) {
+            System.exit(0);
         } else {
             MenuCostumer.costumerRestaurant(menuCostumer, database);
         }

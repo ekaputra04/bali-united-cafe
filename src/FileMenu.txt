@@ -1,0 +1,62 @@
+Nasi Ayam Sambal Geprek,26500
+Nasi Ayam Sambal Matah,25000
+Nasi Ayam Sambal Konslet,25000
+Nasi Kulit Ayam Sambal Geprek,20000
+Nasi Kulit Ayam Sambal Matah,20000
+Nasi Kulit Ayam Sambal Konslet,20000
+Nasi Ayam Goreng + Plecing Kangkung,30000
+Nasi Ayam Bakar + Plecing Kangkung,30000
+Nasi Chicken Teriyaki,25000
+Nasi Ayam Koloke,26500
+Nasi Sop Iga,45000
+Nasi Goreng Kampung,25000
+Nasi Goreng Gila Bola,26500
+Nasi Goreng Popmie,25000
+Nasi Capcay,20000
+Capcay,20000
+Cah Kangkung,20000
+Plecing Kangkung,20000
+Tahu Tempe Goreng,15000
+Mie Bakso Ayam,20000
+Mie Bakso Sapi,22000
+Bakso Ayam Pangsit Komplit,23000
+Bakso Sapi Pangsit Komplit,25000
+Chicken Burger,20000
+Sandwich,25000
+Hotdog,24000
+Spaghetti Carbonara,23000
+Spaghetti Bolognaise,23000
+Spaghetti Aglio o'llo,20000
+Indomie Telur Luncheon,12000
+Indomie Telur Kornet,15000
+Indomie Goreng Selera Semeton,15000
+Indomie Kuah Selera Semeton,15000
+Indomie Ayam Crispy Sambal Matah,20000
+Indomie Ayam Geprek Tridatu,20000
+Indomie Nendang Banget,23000
+Indomie Nyemek,23000
+Creamy Latte,12000
+Cappucino,12000
+Black Coffee Torabika,12000
+Black Tea,5000
+Lemon Tea,5000
+Lychee Tea,5000
+Teh Tarik,15000
+Beer Guinness,30000
+Milkshake,18000
+Tridatu Mocktails,20000
+Friench Fries,15000
+Crazy Friench Fries,20000
+Chicken Wing,25000
+Chicken Luncheon,10000
+Kacang Kapri,5000
+Tahu Krispi,15000
+Tempe Mendoan,15000
+Roti Bakar Coklat,15000
+Roti Bakar Keju,15000
+Roti Bakar Coklat Keju,18000
+Roti Bakar Gula,15000
+Roti Bakar Telur Kornet,20000
+Pisang Bakar Coklat,20000
+Pisang Bakar Keju,20000
+Pisang Bakar Coklat Keju,22000
