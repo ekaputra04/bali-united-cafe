@@ -8,7 +8,7 @@ public class RestoranOnline {
         System.out.println("Daftar Menu:");
         for (int i = 0; i < daftarMenu.size(); i++) {
             Menu menu = daftarMenu.get(i);
-            System.out.println((i+1) + ". " + menu.getNama(i) + " - Rp" + menu.getHarga(i));
+            System.out.println((i+1) + ". " + menu.getNama() + " - Rp" + menu.getHarga());
         }
     }
 
@@ -37,7 +37,7 @@ public class RestoranOnline {
         System.out.println("Daftar Pelanggan:");
         for (int i = 0; i < daftarPelanggan.size(); i++) {
             User pelanggan = daftarPelanggan.get(i);
-            System.out.println((i+1) + ". " + pelanggan.getUsername() + " - " + pelanggan.getAlamat());
+            System.out.println((i+1) + ". " + pelanggan.getNamaUser() + " - " + pelanggan.getAlamatUser());
         }
     }
 
@@ -46,7 +46,7 @@ public class RestoranOnline {
         System.out.println("Daftar Pembayaran:");
         for (int i = 0; i < daftarPembayaran.size(); i++) {
             Pembayaran pembayaran = daftarPembayaran.get(i);
-            System.out.println((i+1) + ". " + pembayaran.getPesanan().getMenu().getNama(i) + " x" + pembayaran.getPesanan().getJumlah() + " - Rp" + pembayaran.getPesanan().getTotalHarga() + " - Bayar Rp" + pembayaran.getJumlahUang() + " - Kembalian Rp" + pembayaran.getKembalian());
+            System.out.println((i+1) + ". " + pembayaran.getPesanan().getMenu().getNama() + " x" + pembayaran.getPesanan().getJumlah() + " - Rp" + pembayaran.getPesanan().getTotalHarga() + " - Bayar Rp" + pembayaran.getJumlahUang() + " - Kembalian Rp" + pembayaran.getKembalian());
         }
     }
 }

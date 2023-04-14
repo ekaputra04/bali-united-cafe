@@ -2,7 +2,8 @@ import java.io.*;
 import java.util.Scanner;
 
 public class EditFileMenu {
-    public void bacaFileMenu(Database database) {
+    public static void bacaFileMenu(Database database) {
+        database.hapushMenu();
         try {
             File file = new File("src/FileMenu.txt");
             Scanner scanner = new Scanner(file);
@@ -23,7 +24,7 @@ public class EditFileMenu {
         }
     }
 
-    public void isiFileMenu(String namaMenu, int hargaMenu) {
+    public static void isiFileMenu(String namaMenu, int hargaMenu) {
         // Menyimpan data restoran ke dalam file FileMenu.txt
         try {
             FileWriter writer = new FileWriter("src/FileMenu.txt", true);
@@ -36,7 +37,7 @@ public class EditFileMenu {
         }
     }
 
-    public void hapusFileMenu(int indexToDelete) {
+    public static void hapusFileMenu(int indexToDelete) {
         String fileName = "src/FileMenu.txt";
 
         try {

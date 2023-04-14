@@ -3,7 +3,6 @@ import java.util.*;
 public class MenuAdmin {
 
     private static Scanner input = new Scanner(System.in);
-    private static EditFileMenu editFileMenu = new EditFileMenu();
     private static ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
     private static ArrayList<Menu> menus = new ArrayList<Menu>();
 
@@ -83,7 +82,7 @@ public class MenuAdmin {
 
     public static void adminLihatMenuRestaurant(Database database){
         menus.clear();
-        editFileMenu.bacaFileMenu(database);
+        EditFileMenu.bacaFileMenu(database);
         menus = database.getDaftarMenu();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -117,14 +116,14 @@ public class MenuAdmin {
         namaMenu = input.nextLine();
         System.out.print("Masukkan harga menu : ");
         hargaMenu = input.nextInt();
-        editFileMenu.isiFileMenu(namaMenu, hargaMenu);
+        EditFileMenu.isiFileMenu(namaMenu, hargaMenu);
         Menu menuBaru = new Menu(namaMenu, hargaMenu);
         database.tambahMenu(menuBaru);
     }
 
     public static void adminHapusMenuRestaurant(Database database){
         menus.clear();
-        editFileMenu.bacaFileMenu(database);
+        EditFileMenu.bacaFileMenu(database);
         menus = database.getDaftarMenu();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -147,7 +146,7 @@ public class MenuAdmin {
                 System.out.println("Nomor menu tidak valid.");
             } else {
                 menus.remove(index - 1);
-                editFileMenu.hapusFileMenu(index);
+                EditFileMenu.hapusFileMenu(index);
                 System.out.println("Menu berhasil dihapus.");
             }
         }

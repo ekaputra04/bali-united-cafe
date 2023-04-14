@@ -3,6 +3,7 @@ import java.io.*;
 public class EditFileRestaurant {
 
     public static void bacaFileRestaurant(Database database) {
+        database.hapusRestaurant();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/FileRestaurant.txt"));
     

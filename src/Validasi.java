@@ -8,13 +8,29 @@ public class Validasi {
         do {
             System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
             while (!scanner.hasNextInt()) {
-                System.out.println("Input harus berupa angka!");
+                System.out.println("Input harus berupa angka! Silakan coba lagi.");
                 System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
                 scanner.next();
             }
-            System.out.println("Angka yang dimasukkan harus dalam rentang antara " + paramBawah + " dan " + paramAtas + ". Silakan coba lagi.");
             angka = scanner.nextInt();
         } while (angka < paramBawah || angka > paramAtas);
+
+        return angka;
+    }
+
+    public static int validasiAngkaLebih0 (){
+        Scanner scanner = new Scanner(System.in);
+        int angka;
+
+        do {
+            System.out.print("Masukkan angka : ");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Input harus berupa angka! Silakan coba lagi.");
+                System.out.print("Masukkan angka : ");
+                scanner.next();
+            }
+            angka = scanner.nextInt();
+        } while (angka < 0);
 
         return angka;
     }

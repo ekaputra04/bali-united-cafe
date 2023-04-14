@@ -1,3 +1,6 @@
 BU Cafe Gianyar,Gianyar
 BU Cafe Jimbaran,Jimbaran
 BU Cafe Badung,Badung
+BU Cafe Karangasem,Karangasem
+BU Cafe Klungkung,Klungkung
+BU Cafe Singaraja,Singaraja

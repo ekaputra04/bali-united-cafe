@@ -10,6 +10,7 @@ public class Login {
         System.out.println("||                                                         ||");
         System.out.println("||                       WELLCOME TO                       ||");
         System.out.println("||                    BALI UNITED CAFE                     ||");
+        System.out.println("||              ~ Online Restaurant Version ~              ||");
         System.out.println("||                                                         ||");
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||            'Connecting People Through Sport'            ||");
@@ -29,7 +30,7 @@ public class Login {
         if (ruleUser == 1) {
             verifikasiAdmin(database);
         } else if (ruleUser == 2) {
-            loginCostumer(database);
+            verifikasiCostumer(database);
         }
     }
 
@@ -49,12 +50,12 @@ public class Login {
         // Memeriksa apakah input username dan password cocok dengan data admin
         if (verifikasiAdmin.verifyAdmin(username, password)) {
             System.out.println("Verifikasi berhasil. Anda adalah admin.");
-            loginAdmin(database);
+            Login.loginAdmin(database);
         } else {
             System.out.println("Username atau password salah. Anda bukan admin.");
             input.nextLine();
             ClearConsole.clearConsole();
-            login(database);
+            Login.login(database);
         }
     }
 
@@ -100,7 +101,7 @@ public class Login {
         }
     }
 
-    public static void loginCostumer(Database database) {
+    public static void verifikasiCostumer(Database database) {
         String nama;
         String alamat;
         Main.header();
@@ -114,7 +115,10 @@ public class Login {
         System.out.println("Selamat datang " + nama);
         User pelanggan = new User(nama, alamat);
         database.tambahPelanggan(pelanggan);
+        Login.loginCostumer(database);
+    }
 
+    public static void loginCostumer(Database database) {
         int menuCostumer;
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -128,7 +132,7 @@ public class Login {
         System.out.println("||---------------------------------------------------------||");
         System.out.println("|| [5] Keluar Program                                      ||");
         System.out.println("=============================================================");
-        System.out.print("Masukkan pilihan Anda : ");
+        System.out.println("Masukkan pilihan Anda : ");
         menuCostumer = Validasi.validasiAngka(1, 5);
 
         if (menuCostumer == 1) {

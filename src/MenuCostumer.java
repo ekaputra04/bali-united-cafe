@@ -2,13 +2,11 @@ import java.util.*;
 
 public class MenuCostumer {
 
-    private static Scanner input = new Scanner(System.in);
     private static ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
     private static ArrayList<Menu> menus = new ArrayList<Menu>();
     private static ArrayList<Pesanan> pesanans = new ArrayList<Pesanan>();
 
     public static void customerLihatRestaurant(Database database) {
-        restaurants.clear();
         EditFileRestaurant.bacaFileRestaurant(database);
         restaurants = database.getDaftarRestaurant();
         Main.header();
@@ -31,7 +29,7 @@ public class MenuCostumer {
     }
 
     public static void customerBuatPesanan(Database database) {
-        menus.clear();
+        EditFileMenu.bacaFileMenu(database);
         menus = database.getDaftarMenu();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -41,64 +39,95 @@ public class MenuCostumer {
         System.out.println("=============================================================");
         System.out.println("Daftar Menu :");
 
-        for (int i = 0; i < menus.size(); i++) {
-            Menu menu = menus.get(i);
-            // System.out.println((i + 1) + ". " + menu.getNama() + " (" + menu.getHarga() + ")");
-            System.out.printf("%d. %-37s (%d)%n", i + 1, menu.getNama(), menu.getHarga());
-        }
-
-        while (true) {
-            System.out.print("Pilih menu yang ingin dipesan (0 untuk selesai): ");
-            int pilihan = input.nextInt();
-            input.nextLine(); // membersihkan newline character
-
-            if (pilihan == 0) {
-                break;
+        if (menus.isEmpty()) {
+            System.out.println("Belum ada menu.");
+        } else {
+            for (int i = 0; i < menus.size(); i++) {
+                Menu menu = menus.get(i);
+                System.out.printf("%d.\t%-37s (%d)%n", i + 1, menu.getNama(), menu.getHarga());
             }
 
-            Menu menu = menus.get(pilihan - 1);
-            System.out.print("Masukkan jumlah pesanan: ");
-            int jumlah = input.nextInt();
-            System.out.println("-------------------------------------------------------------");
-            input.nextLine(); // membersihkan newline character
+            while (true) {
+                System.out.println("Pilih menu yang ingin dipesan (0 untuk selesai): ");
+                int pilihan;
+                pilihan = Validasi.validasiAngka(0, menus.size());
+                // input.nextLine(); // membersihkan newline character
+    
+                if (pilihan == 0) {
+                    break;
+                }
+    
+                Menu menu = menus.get(pilihan - 1);
+                System.out.println("Masukkan jumlah pesanan: ");
+                int jumlah;
+                jumlah = Validasi.validasiAngkaLebih0();
+                // jumlah = input.nextInt();
+                System.out.println("-------------------------------------------------------------");
+                // input.nextLine(); // membersihkan newline character
+    
+                Pesanan pesanan = new Pesanan(menu, jumlah);
+                database.tambahPesanan(pesanan);
+            }
 
-            Pesanan pesanan = new Pesanan(menu, jumlah);
-            database.tambahPesanan(pesanan);
+            System.out.println("-------------------------------------------------------------");
+            System.out.printf("%s.\t%-37s\t%s\t%s\n", "No", "Nama Pesanan", "Jumlah", "Sub Total Harga");
+            for (int i = 0; i < pesanans.size(); i++) {
+                Pesanan pesanan = pesanans.get(i);
+                System.out.printf("%d.\t%-37s \t %d \t Rp. %d\n", i+1, pesanan.getMenu().getNama(), pesanan.getJumlah(), pesanan.getTotalHarga());
+            }
+            System.out.println("-------------------------------------------------------------");
         }
+
+        Login.loginCostumer(database);
     }
 
     public static void customerLihatPesanan(Database database) {
-
+        // pesanans.clear();
+        pesanans = database.getDaftarPesanan();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                      MENU COSTUMER                      ||");
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                      Lihat Pesanan                      ||");
         System.out.println("=============================================================");
-        System.out.println("\nPesanan:");
-        for (int i = 0; i < pesanans.size(); i++) {
-            Pesanan pesanan = pesanans.get(i);
-            System.out.println(
-                pesanan.getMenu().getNama() + " (" + pesanan.getJumlah() + ") - " + pesanan.getTotalHarga());
+        System.out.println("Pesanan:");
+        if (pesanans.isEmpty()) {
+            System.out.println("Belum ada pesanan.");
+        } else {
+            System.out.printf("%s.\t%-37s\t%s\t%s\n", "No", "Nama Pesanan", "Jumlah", "Sub Total Harga");
+            for (int i = 0; i < pesanans.size(); i++) {
+                Pesanan pesanan = pesanans.get(i);
+                System.out.printf("%d.\t%-37s \t %d \t Rp. %d\n", i+1, pesanan.getMenu().getNama(), pesanan.getJumlah(), pesanan.getTotalHarga());
+            }
+
+            int totalHarga = 0;
+            for (int i = 0; i < pesanans.size(); i++) {
+                totalHarga += pesanans.get(i).getTotalHarga();
+            }
+            
+            System.out.println("Total harga: " + totalHarga);
+
+            int jumlahUang;
+
+            do{
+                System.out.print("Masukkan jumlah uang: ");
+                jumlahUang = Validasi.validasiAngkaLebih0();
+                if (jumlahUang < totalHarga){
+                    System.out.println("Jumah uang Anda kurang!");
+                }
+            } while (jumlahUang < totalHarga);
+            
+            Pembayaran pembayaran = new Pembayaran(pesanans.get(0), jumlahUang);
+            System.out.println("Kembalian: " + pembayaran.getKembalian());
+
+            database.tambahPembayaran(pembayaran);
+
+            ArrayList<User> pelanggan = new ArrayList<User>();
+            pelanggan = database.getDaftarPelanggan();
+
+            System.out.println("\nTerima kasih " + pelanggan.get(0).getNamaUser() + " telah berkunjung ke Bali United Cafe!");
         }
 
-        int totalHarga = 0;
-        for (int i = 0; i < pesanans.size(); i++) {
-            totalHarga += pesanans.get(i).getTotalHarga();
-        }
-        System.out.println("Total harga: " + totalHarga);
-
-        System.out.print("Masukkan jumlah uang: ");
-        int jumlahUang = input.nextInt();
-
-        Pembayaran pembayaran = new Pembayaran(pesanans.get(0), jumlahUang);
-        System.out.println("Kembalian: " + pembayaran.getKembalian());
-
-        database.tambahPembayaran(pembayaran);
-
-        ArrayList<User> pelanggan = new ArrayList<User>();
-        pelanggan = database.getDaftarPelanggan();
-
-        System.out.println("\nTerima kasih " + pelanggan.get(0).getUsername() + " telah berkunjung keBali United Cafe!");
+        Login.loginCostumer(database);
     }
 }

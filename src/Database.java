@@ -12,12 +12,20 @@ public class Database {
         daftarRestaurant.add(restaurant);
     }
 
+    public void hapusRestaurant(){
+        daftarRestaurant.clear();
+    }
+
     public ArrayList<Restaurant> getDaftarRestaurant() {
         return daftarRestaurant;
     }
 
     public void tambahMenu(Menu menu) {
         daftarMenu.add(menu);
+    }
+
+    public void hapushMenu() {
+        daftarMenu.clear();;
     }
 
     public ArrayList<Menu> getDaftarMenu() {
@@ -28,6 +36,10 @@ public class Database {
         daftarPelanggan.add(pelanggan);
     }
 
+    public void hapusPelanggan() {
+        daftarPelanggan.clear();
+    }
+
     public ArrayList<User> getDaftarPelanggan() {
         return daftarPelanggan;
     }    
@@ -36,12 +48,20 @@ public class Database {
         daftarPesanan.add(pesanan);
     }
 
+    public void hapusPesanan() {
+        daftarPesanan.clear();
+    }
+
     public ArrayList<Pesanan> getDaftarPesanan() {
         return daftarPesanan;
     }
 
     public void tambahPembayaran(Pembayaran pembayaran) {
         daftarPembayaran.add(pembayaran);
+    }
+
+    public void hapusPembayaran() {
+        daftarPembayaran.clear();
     }
 
     public ArrayList<Pembayaran> getDaftarPembayaran() {
