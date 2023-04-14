@@ -22,6 +22,7 @@ public class MenuAdmin {
         } else {
             for (int i = 0; i < restaurants.size(); i++) {
                 System.out.println("Restaurant " + (i + 1) + ":");
+                System.out.println("Id Restaurant : " + restaurants.get(i).getIdRestaurant());
                 System.out.println("Nama   : " + restaurants.get(i).getName());
                 System.out.println("Alamat : " + restaurants.get(i).getAddress());
                 System.out.println("-------------------------------------------------------------");
@@ -30,8 +31,12 @@ public class MenuAdmin {
     }
 
     public static void adminTambahRestaurant(Database database) {
+        restaurants.clear();
+        EditFileRestaurant.bacaFileRestaurant(database);
+        restaurants = database.getDaftarRestaurant();
         String name;
         String address;
+        String id;
         // input.nextLine(); // Untuk menghilangkan Buffer
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -39,13 +44,21 @@ public class MenuAdmin {
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                     Tambah Restaurant                   ||");
         System.out.println("=============================================================");
-        System.out.print("Masukkan Nama Restaurant: ");
-        name = input.nextLine();
-        System.out.print("Masukkan Alamat Restaurant: ");
-        address = input.nextLine();
+        do{
+            System.out.print("Masukkan Id Restaurant : ");
+            id = input.nextLine();
+            System.out.print("Masukkan Nama Restaurant : ");
+            name = input.nextLine();
+            System.out.print("Masukkan Alamat Restaurant : ");
+            address = input.nextLine();
+            if (Validasi.validasiRestaurant(id, name)){
+                System.out.println("Id atau Nama Restaurant Telah Digunakan!");
+            }
+        }while(Validasi.validasiRestaurant(id, name));
+        
 
-        EditFileRestaurant.isiFileRestaurant(name, address);
-        Restaurant restaurantBaru = new Restaurant(name, address);
+        EditFileRestaurant.isiFileRestaurant(id, name, address);
+        Restaurant restaurantBaru = new Restaurant(id, name, address);
         database.tambahRestaurant(restaurantBaru);
     }
 
@@ -64,10 +77,12 @@ public class MenuAdmin {
         } else {
             for (int i = 0; i < restaurants.size(); i++) {
                 System.out.println("Restaurant " + (i + 1) + ":");
-                System.out.println("Name: " + restaurants.get(i).getName());
-                System.out.println("Address: " + restaurants.get(i).getAddress());
-                System.out.println();
+                System.out.println("Id Restaurant : " + restaurants.get(i).getIdRestaurant());
+                System.out.println("Nama   : " + restaurants.get(i).getName());
+                System.out.println("Alamat : " + restaurants.get(i).getAddress());
+                System.out.println("-------------------------------------------------------------");
             }
+
             System.out.print("Masukkan nomor restaurant yang ingin dihapus: ");
             int index = input.nextInt();
             if (index < 1 || index > restaurants.size()) {

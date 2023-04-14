@@ -10,10 +10,11 @@ public class EditFileRestaurant {
             String line = reader.readLine();
             while (line != null) {
                 String[] data = line.split(",");
-                String nama = data[0];
-                String alamat = data[1];
+                String id = data[0];
+                String nama = data[1];
+                String alamat = data[2];
 
-                Restaurant restaurants = new Restaurant(nama, alamat);
+                Restaurant restaurants = new Restaurant(id, nama, alamat);
                 database.tambahRestaurant(restaurants);
 
                 line = reader.readLine();
@@ -26,12 +27,12 @@ public class EditFileRestaurant {
         }
     }
 
-    public static void isiFileRestaurant(String nama, String alamat) {
+    public static void isiFileRestaurant(String id, String nama, String alamat) {
 
         // Menyimpan data restoran ke dalam file FileREstaurant.txt
         try {
             FileWriter writer = new FileWriter("src/FileRestaurant.txt", true);
-            writer.write(nama + "," + alamat + "\n");
+            writer.write(id + "," + nama + "," + alamat + "\n");
             writer.close();
             System.out.println("Data restoran berhasil disimpan.");
         } catch (IOException e) {
