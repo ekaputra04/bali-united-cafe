@@ -2,7 +2,7 @@ import java.io.*;
 
 public class EditFileRestaurant {
 
-    public void bacaFileRestaurant(Database database) {
+    public static void bacaFileRestaurant(Database database) {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/FileRestaurant.txt"));
     
@@ -25,7 +25,7 @@ public class EditFileRestaurant {
         }
     }
 
-    public void isiFileRestaurant(String nama, String alamat) {
+    public static void isiFileRestaurant(String nama, String alamat) {
 
         // Menyimpan data restoran ke dalam file FileREstaurant.txt
         try {
@@ -39,7 +39,7 @@ public class EditFileRestaurant {
         }
     }
 
-    public void hapusFileRestaurant(int indexToDelete) {
+    public static void hapusFileRestaurant(int indexToDelete) {
         String fileName = "src/FileRestaurant.txt";
 
         try {

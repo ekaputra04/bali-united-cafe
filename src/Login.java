@@ -101,6 +101,20 @@ public class Login {
     }
 
     public static void loginCostumer(Database database) {
+        String nama;
+        String alamat;
+        Main.header();
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                   VERIFIKASI COSTUMER                   ||");
+        System.out.println("=============================================================");
+        System.out.print("Masukkan Nama Anda : ");
+        nama = input.nextLine();
+        System.out.print("Masukkan Alamat Anda : ");
+        alamat = input.nextLine();
+        System.out.println("Selamat datang " + nama);
+        User pelanggan = new User(nama, alamat);
+        database.tambahPelanggan(pelanggan);
+
         int menuCostumer;
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -108,22 +122,26 @@ public class Login {
         System.out.println("||---------------------------------------------------------||");
         System.out.println("|| Silahkan Pilih Menu Program:                            ||");
         System.out.println("|| [1] Lihat Restaurant                                    ||");
-        System.out.println("|| [2] Buat Pesanan                                        ||");
+        System.out.println("|| [2] Lihat Menu Restaurant & Buat Pesanan                ||");
         System.out.println("|| [3] Lihat Pesanan                                       ||");
         System.out.println("|| [4] Kembali ke Login                                    ||");
         System.out.println("||---------------------------------------------------------||");
         System.out.println("|| [5] Keluar Program                                      ||");
         System.out.println("=============================================================");
-        System.out.println("Masukkan pilihan Anda : ");
+        System.out.print("Masukkan pilihan Anda : ");
         menuCostumer = Validasi.validasiAngka(1, 5);
 
-        if (menuCostumer == 4) {
+        if (menuCostumer == 1) {
+            MenuCostumer.customerLihatRestaurant(database);
+        } else if (menuCostumer == 2) {
+            MenuCostumer.customerBuatPesanan(database);
+        } else if (menuCostumer == 3) {
+            MenuCostumer.customerLihatPesanan(database);
+        } else if (menuCostumer == 4) {
             ClearConsole.clearConsole();
             login(database);
         } else if (menuCostumer == 5) {
             System.exit(0);
-        } else {
-            MenuCostumer.costumerRestaurant(menuCostumer, database);
         }
     }
 }

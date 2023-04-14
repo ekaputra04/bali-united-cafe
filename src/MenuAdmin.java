@@ -3,14 +3,13 @@ import java.util.*;
 public class MenuAdmin {
 
     private static Scanner input = new Scanner(System.in);
-    private static EditFileRestaurant editFileRestaurant = new EditFileRestaurant();
     private static EditFileMenu editFileMenu = new EditFileMenu();
     private static ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
     private static ArrayList<Menu> menus = new ArrayList<Menu>();
 
     public static void adminLihatRestaurant(Database database) {
         restaurants.clear();
-        editFileRestaurant.bacaFileRestaurant(database);
+        EditFileRestaurant.bacaFileRestaurant(database);
         restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -46,14 +45,14 @@ public class MenuAdmin {
         System.out.print("Masukkan Alamat Restaurant: ");
         address = input.nextLine();
 
-        editFileRestaurant.isiFileRestaurant(name, address);
+        EditFileRestaurant.isiFileRestaurant(name, address);
         Restaurant restaurantBaru = new Restaurant(name, address);
         database.tambahRestaurant(restaurantBaru);
     }
 
     public static void adminHapusRestaurant(Database database) {
         restaurants.clear();
-        editFileRestaurant.bacaFileRestaurant(database);
+        EditFileRestaurant.bacaFileRestaurant(database);
         restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -76,7 +75,7 @@ public class MenuAdmin {
                 System.out.println("Nomor restaurant tidak valid.");
             } else {
                 restaurants.remove(index - 1);
-                editFileRestaurant.hapusFileRestaurant(index);
+                EditFileRestaurant.hapusFileRestaurant(index);
                 System.out.println("Restaurant berhasil dihapus.");
             }
         }

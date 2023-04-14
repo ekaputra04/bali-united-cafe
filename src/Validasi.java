@@ -2,21 +2,20 @@ import java.util.*;
 
 public class Validasi {
     public static int validasiAngka (int paramBawah, int paramAtas){
-        Scanner inputAngka = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        int angka;
 
-        System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
-        while (!inputAngka.hasNextInt()) {
-            System.out.println("Input yang dimasukkan bukan angka. Silakan coba lagi.");
+        do {
             System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
-            inputAngka.nextLine();
-        }
-        int angka = inputAngka.nextInt();
-
-        while (angka < paramBawah || angka > paramAtas) {
+            while (!scanner.hasNextInt()) {
+                System.out.println("Input harus berupa angka!");
+                System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
+                scanner.next();
+            }
             System.out.println("Angka yang dimasukkan harus dalam rentang antara " + paramBawah + " dan " + paramAtas + ". Silakan coba lagi.");
-            System.out.print("Masukkan angka antara " + paramBawah + " dan " + paramAtas + ": ");
-            angka = inputAngka.nextInt();
-        }
+            angka = scanner.nextInt();
+        } while (angka < paramBawah || angka > paramAtas);
+
         return angka;
     }
 }
