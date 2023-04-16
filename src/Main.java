@@ -11,6 +11,8 @@ public class Main {
 
     public static void main(String[] args) {
         Database database = new Database();
+        EditFileMenu.bacaFileMenu(database);
+        EditFileRestaurant.bacaFileRestaurant(database);
         Login.login(database);
     }
 }

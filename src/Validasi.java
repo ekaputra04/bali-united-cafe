@@ -42,6 +42,23 @@ public class Validasi {
         return angka;
     }
 
+    public static float validasiAngkaFloatLebih0 (){
+        Scanner scanner = new Scanner(System.in);
+        float angka;
+
+        do {
+            System.out.print("Masukkan angka : ");
+            while (!scanner.hasNextInt()) {
+                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset );
+                System.out.print("Masukkan angka : ");
+                scanner.next();
+            }
+            angka = scanner.nextInt();
+        } while (angka < 0);
+
+        return angka;
+    }
+
     public static boolean validasiRestaurant(String idRestaurant, String namaRestaurant) {
         String fileName = "src/FileRestaurant.txt";
         boolean isRestaurant = false;

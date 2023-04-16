@@ -3,42 +3,22 @@ import java.util.*;
 public class MenuAdmin {
 
     private static Scanner input = new Scanner(System.in);
-    private static ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
-    private static ArrayList<Menu> menus = new ArrayList<Menu>();
     // ANSI escape code untuk tulisan merah
     private static String red = "\033[31m";
     // ANSI escape code untuk mereset warna
     private static String reset = "\033[0m";
 
     public static void adminLihatRestaurant(Database database) {
-        restaurants.clear();
-        EditFileRestaurant.bacaFileRestaurant(database);
-        restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                        MENU ADMIN                       ||");
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                     Lihat Restaurant                    ||");
         System.out.println("=============================================================");
-
-        if (restaurants.isEmpty()) {
-            System.out.println(red + "Belum ada restaurant." + reset);
-            System.out.println("-------------------------------------------------------------");
-        } else {
-            for (int i = 0; i < restaurants.size(); i++) {
-                System.out.println("Restaurant " + (i + 1) + ":");
-                System.out.println("Id Restaurant : " + restaurants.get(i).getIdRestaurant());
-                System.out.println("Nama   : " + restaurants.get(i).getName());
-                System.out.println("Alamat : " + restaurants.get(i).getAddress());
-                System.out.println("-------------------------------------------------------------");
-            }
-        }
+        Fitur.tampilkanRestaurant(database);
     }
 
     public static void adminTambahRestaurant(Database database) {
-        restaurants.clear();
-        EditFileRestaurant.bacaFileRestaurant(database);
-        restaurants = database.getDaftarRestaurant();
         String name;
         String address;
         String id;
@@ -75,8 +55,7 @@ public class MenuAdmin {
     }
 
     public static void adminHapusRestaurant(Database database) {
-        restaurants.clear();
-        EditFileRestaurant.bacaFileRestaurant(database);
+        ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
         restaurants = database.getDaftarRestaurant();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -111,8 +90,7 @@ public class MenuAdmin {
     }
 
     public static void adminLihatMenuRestaurant(Database database) {
-        menus.clear();
-        EditFileMenu.bacaFileMenu(database);
+        ArrayList<Menu> menus = new ArrayList<Menu>();
         menus = database.getDaftarMenu();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -124,13 +102,7 @@ public class MenuAdmin {
             System.out.println(red + "Belum ada menu." + reset);
             System.out.println("-------------------------------------------------------------");
         } else {
-            for (int i = 0; i < menus.size(); i++) {
-                System.out.println("Menu " + (i + 1) + ":");
-                System.out.println("Id Menu   : " + menus.get(i).getIdMenu());
-                System.out.println("Nama Menu : " + menus.get(i).getNama());
-                System.out.println("Harga     : Rp. " + menus.get(i).getHarga());
-                System.out.println("-------------------------------------------------------------");
-            }
+            Fitur.tampilkanMenu(database);
         }
     }
 
@@ -172,8 +144,7 @@ public class MenuAdmin {
     }
 
     public static void adminHapusMenuRestaurant(Database database) {
-        menus.clear();
-        EditFileMenu.bacaFileMenu(database);
+        ArrayList<Menu> menus = new ArrayList<Menu>();
         menus = database.getDaftarMenu();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
