@@ -51,7 +51,7 @@ public class Fitur {
 
         // Menampilkan tanggal dan waktu saat ini
         String tanggalWaktu = waktuSekarang.format(formatTanggalWaktu);
-        System.out.println("Waktu Pemesanan : " + tanggalWaktu);
+        System.out.println("Waktu Pemesanan  : " + tanggalWaktu);
     }
 
     public static void terimaPesanan(User pelanggan, Pesanan pesanan, Database database) {

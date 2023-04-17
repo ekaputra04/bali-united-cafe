@@ -133,7 +133,7 @@ public class Login {
             System.out.println("||                       MENU COSTUMER                     ||");
             System.out.println("||---------------------------------------------------------||");
             System.out.println("|| Silahkan Pilih Menu Program:                            ||");
-            System.out.println("|| [1] Lihat Restaurant                                    ||");
+            System.out.println("|| [1] Lihat Daftar Restaurant                                    ||");
             System.out.println("|| [2] Lihat Menu Restaurant                               ||");
             System.out.println("|| [3] Buat Pesanan                                        ||");
             System.out.println("|| [4] Lihat Riwayat Transaksi                             ||");
