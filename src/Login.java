@@ -79,12 +79,13 @@ public class Login {
             System.out.println("|| [4] Lihat Menu Restaurant                               ||");
             System.out.println("|| [5] Tambah Menu Restaurant                              ||");
             System.out.println("|| [6] Hapus Menu Restaurant                               ||");
-            System.out.println("|| [7] Kembali ke Login                                    ||");
+            System.out.println("|| [7] Lihat Daftar Pelanggan                              ||");
+            System.out.println("|| [8] Kembali ke Login                                    ||");
             System.out.println("||---------------------------------------------------------||");
-            System.out.println("|| [8] Keluar Program                                      ||");
+            System.out.println("|| [9] Keluar Program                                      ||");
             System.out.println("=============================================================");
             System.out.println("Masukkan pilihan Anda : ");
-            menuAdmin = Validasi.validasiAngka(1, 8);
+            menuAdmin = Validasi.validasiAngka(1, 9);
 
             if (menuAdmin == 1) {
                 MenuAdmin.adminLihatRestaurant(database);
@@ -99,6 +100,8 @@ public class Login {
             } else if (menuAdmin == 6) {
                 MenuAdmin.adminHapusMenuRestaurant(database);
             } else if (menuAdmin == 7) {
+                MenuAdmin.adminLihatPelanggan(database);
+            } else if (menuAdmin == 8) {
                 ClearConsole.clearConsole();
                 Login.login(database);
             } else {
@@ -110,6 +113,8 @@ public class Login {
     public static void verifikasiCostumer(Database database) {
         String nama;
         String alamat;
+        database.hapusPembayaran();
+        database.hapusPesananTotal();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                   VERIFIKASI COSTUMER                   ||");
@@ -122,6 +127,8 @@ public class Login {
         System.out.println("-------------------------------------------------------------");
         User pelanggan = new User(nama, alamat);
         database.tambahPelanggan(pelanggan);
+        database.hapusPelangganBeli();
+        database.tambahPelangganBeli(pelanggan);
         Login.loginCostumer(database);
     }
 
@@ -133,7 +140,7 @@ public class Login {
             System.out.println("||                       MENU COSTUMER                     ||");
             System.out.println("||---------------------------------------------------------||");
             System.out.println("|| Silahkan Pilih Menu Program:                            ||");
-            System.out.println("|| [1] Lihat Daftar Restaurant                                    ||");
+            System.out.println("|| [1] Lihat Daftar Restaurant                             ||");
             System.out.println("|| [2] Lihat Menu Restaurant                               ||");
             System.out.println("|| [3] Buat Pesanan                                        ||");
             System.out.println("|| [4] Lihat Riwayat Transaksi                             ||");

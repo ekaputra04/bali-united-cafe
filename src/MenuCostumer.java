@@ -41,7 +41,7 @@ public class MenuCostumer {
         System.out.println("=============================================================");
         System.out.println("Daftar Restaurant : ");
         Fitur.tampilkanRestaurant(database);
-        do{
+        do {
             System.out.print("Pilih Id Restaurant yang akan dikunjungi : ");
             idRestaurant = input.nextLine();
             isRestaurant = Validasi.validasiIdRestaurant(database, idRestaurant);
@@ -73,6 +73,7 @@ public class MenuCostumer {
 
                 Pesanan pesanan = new Pesanan(menu, jumlah);
                 database.tambahPesanan(pesanan);
+                database.tambahPesananTotal(pesanan);
                 System.out.println("-------------------------------------------------------------");
             }
 
@@ -111,8 +112,9 @@ public class MenuCostumer {
             System.out.println("Pembayaran telah diterima.");
 
             ArrayList<User> pelanggans = new ArrayList<User>();
-            pelanggans = database.getDaftarPelanggan();
-            System.out.println(red + "Terima kasih " + pelanggans.get(0).getNamaUser() + " telah berkunjung ke Bali United Cafe!" + reset);
+            pelanggans = database.getDaftarPelangganBeli();
+            System.out.println(red + "Terima kasih " + pelanggans.get(0).getNamaUser()
+                    + " telah berkunjung ke Bali United Cafe!" + reset);
             System.out.println("=============================================================");
             System.out.println("||                      MENU COSTUMER                      ||");
             System.out.println("||---------------------------------------------------------||");
@@ -141,20 +143,15 @@ public class MenuCostumer {
     }
 
     public static void customerLihatTransaksi(Database database) {
-        ArrayList<Pembayaran> pembayarans = new ArrayList<Pembayaran>();
-        pembayarans = database.getDaftarPembayaran();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                      MENU COSTUMER                      ||");
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                 Lihat Riwayat Transaksi                 ||");
         System.out.println("=============================================================");
+        System.out.println("Daftar Riwayat Pesanan :");
+        Fitur.tampilkanDaftarPesananTotal(database);
         System.out.println("Daftar Riwayat Transaksi :");
-        if (pembayarans.isEmpty()) {
-            System.out.println(red + "Belum ada transaksi." + reset);
-            System.out.println("-------------------------------------------------------------");
-        } else {
-            Fitur.tampilkanDaftarPembayaran(database);
-        }
+        Fitur.tampilkanDaftarPembayaran(database);
     }
 }

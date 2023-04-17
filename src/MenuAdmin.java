@@ -158,6 +158,7 @@ public class MenuAdmin {
         } else {
             for (int i = 0; i < menus.size(); i++) {
                 System.out.println("Menu " + (i + 1) + ":");
+                System.out.println("Id Menu   : " + menus.get(i).getIdMenu());
                 System.out.println("Nama Menu : " + menus.get(i).getNama());
                 System.out.println("Harga     : Rp. " + menus.get(i).getHarga());
                 System.out.println("-------------------------------------------------------------");
@@ -174,5 +175,15 @@ public class MenuAdmin {
                 System.out.println("-------------------------------------------------------------");
             }
         }
+    }
+
+    public static void adminLihatPelanggan(Database database) {
+        Main.header();
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                        MENU ADMIN                       ||");
+        System.out.println("||---------------------------------------------------------||");
+        System.out.println("||                   Lihat Daftar Pelanggan                ||");
+        System.out.println("=============================================================");
+        Fitur.tampilkanDaftarPelanggan(database);
     }
 }

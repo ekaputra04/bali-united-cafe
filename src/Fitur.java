@@ -54,12 +54,6 @@ public class Fitur {
         System.out.println("Waktu Pemesanan  : " + tanggalWaktu);
     }
 
-    public static void terimaPesanan(User pelanggan, Pesanan pesanan, Database database) {
-        database.tambahPelanggan(pelanggan);
-        database.tambahPesanan(pesanan);
-        System.out.println("Pesanan telah diterima.");
-    }
-
     public static void tampilkanDaftarPesanan(Database database) {
         ArrayList<Pesanan> daftarPesanan = database.getDaftarPesanan();
         System.out.println("Daftar Pesanan :");
@@ -70,24 +64,50 @@ public class Fitur {
         }
     }
 
+    public static void tampilkanDaftarPesananTotal(Database database) {
+        ArrayList<Pesanan> daftarPesananTotal = database.getDaftarPesananTotal();
+        System.out.println("Daftar Pesanan :");
+        if (daftarPesananTotal.isEmpty()) {
+            System.out.println(red + "Belum ada pesanan." + reset);
+            System.out.println("-------------------------------------------------------------");
+        } else {
+            for (int i = 0; i < daftarPesananTotal.size(); i++) {
+                Pesanan pesanan = daftarPesananTotal.get(i);
+                System.out.printf("%d.\t%-37s \t x %d \t Rp. %d\n", (i+1), pesanan.getMenu().getNama(), pesanan.getJumlah(), pesanan.getTotalHarga());
+            }
+            System.out.println("-------------------------------------------------------------");
+        }
+    }
+
     public static void tampilkanDaftarPembayaran(Database database) {
         ArrayList<Pembayaran> pembayarans = new ArrayList<Pembayaran>();
         pembayarans = database.getDaftarPembayaran();
-        for (int i = 0; i < pembayarans.size(); i++) {
-            System.out.println("Pembayaran  : " + (i + 1));
-            System.out.println("Total Harga : Rp. " + pembayarans.get(i).getTotalHarga());
-            System.out.println("Total Bayar : Rp. " + pembayarans.get(i).getJumlahUang());
-            System.out.println("Kembalian   : Rp. " + pembayarans.get(i).getKembalian());
+        if (pembayarans.isEmpty()) {
+            System.out.println(red + "Belum ada transaksi." + reset);
             System.out.println("-------------------------------------------------------------");
+        } else {
+            for (int i = 0; i < pembayarans.size(); i++) {
+                System.out.println("Pembayaran  : " + (i + 1));
+                System.out.println("Total Harga : Rp. " + pembayarans.get(i).getTotalHarga());
+                System.out.println("Total Bayar : Rp. " + pembayarans.get(i).getJumlahUang());
+                System.out.println("Kembalian   : Rp. " + pembayarans.get(i).getKembalian());
+                System.out.println("-------------------------------------------------------------");
+            }
         }
     }
 
     public static void tampilkanDaftarPelanggan(Database database) {
         ArrayList<User> daftarPelanggan = database.getDaftarPelanggan();
-        System.out.println("Daftar Pelanggan:");
-        for (int i = 0; i < daftarPelanggan.size(); i++) {
-            User pelanggan = daftarPelanggan.get(i);
-            System.out.println((i + 1) + ". " + pelanggan.getNamaUser() + " - " + pelanggan.getAlamatUser());
+        System.out.println("Daftar Pelanggan :");
+        if (daftarPelanggan.isEmpty()) {
+            System.out.println(red + "Belum ada pelanggan." + reset);
+            System.out.println("-------------------------------------------------------------");
+        } else {
+            for (int i = 0; i < daftarPelanggan.size(); i++) {
+                User pelanggan = daftarPelanggan.get(i);
+                System.out.println((i + 1) + ". " + pelanggan.getNamaUser() + " - " + pelanggan.getAlamatUser());
+            }
+            System.out.println("-------------------------------------------------------------");
         }
     }
 }

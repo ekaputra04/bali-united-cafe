@@ -70,3 +70,20 @@ Jika melakukan login sebagai Customer, kita harus memasukkan nama dan alamat, se
 
 ~ Lihat riwayat transaksi
 
+## Fitur
+
+Program ini dilengkapi oleh beberapa fitur, diantaranya :
+
+~ Clear Console : untuk menghapus console jika suatu proses dalam program sudah tidak diperlukan.
+
+~ Validasi angka pada rentang tertentu : ketika user dihadapkan pilihan yang hanya berupa angka pada rentang tertentu, user hanya bisa menginputkan angka tersebut, tidak bisa menginputkan karakter selain angka.
+
+~ Validasi angka lebih dari 0 : ketika user dihadapkan pilihan yang hanya berupa angka, misalnya input harga atau jarak, user hanya bisa menginputkan angka, tidak bisa menginputkan karakter selain angka.
+
+~ Validasi restaurant : ketika proses menambah restaurant, admin tidak dapat menginputkan id dan nama restaurant yang sudah ada dalam FileRestaurant.txt, sehingga menghindari duplikasi data.
+
+~ Validasi menu : ketika proses menambah menu, admin tidak dapat menginputkan id dan nama menu yang sudah ada dalam FileMenu.txt, sehingga menghindari duplikasi data.
+
+~ Validasi id restaurant : ketika proses pemesanan makanan, customer hanya bisa mengginputkan id restaurant yang sudah terdaftar, tidak bisa menginputkan hal lain.
+
+~ Ketika proses menambah maupun menghapus baik restaurant atau menu, kita dapat membatalkan proses tersebut dengan menginputkan "0".

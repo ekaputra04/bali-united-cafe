@@ -5,4 +5,3 @@ BU04,BU Cafe Singaraja,Singaraja
 BU05,BU Cafe Jakarta,Jakarta
 BU06,BU Cafe Bangli,Bangli
 BU07,BU Cafe Kuta,Kuta
-BU8,BU Cafe Kuta Selatan,Kuta Selatan

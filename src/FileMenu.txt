@@ -60,3 +60,4 @@ Menu59,Roti Bakar Telur Kornet,20000
 Menu60,Pisang Bakar Coklat,20000
 Menu61,Pisang Bakar Keju,20000
 Menu62,Pisang Bakar Coklat Keju,22000
+Menu63,Strawberry Minty,18000
