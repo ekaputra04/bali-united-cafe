@@ -28,9 +28,10 @@ public class MenuCostumer {
     }
 
     public static void customerBuatPesanan(Database database) {
-        ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
         ArrayList<Menu> menus = new ArrayList<Menu>();
         ArrayList<Pesanan> pesanans = new ArrayList<Pesanan>();
+        boolean isRestaurant;
+        String idRestaurant;
         menus = database.getDaftarMenu();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -40,8 +41,12 @@ public class MenuCostumer {
         System.out.println("=============================================================");
         System.out.println("Daftar Restaurant : ");
         Fitur.tampilkanRestaurant(database);
-        System.out.print("Pilih Id Restaurant yang akan dikunjungi : ");
-        String idRestaurant = input.nextLine();
+        do{
+            System.out.print("Pilih Id Restaurant yang akan dikunjungi : ");
+            idRestaurant = input.nextLine();
+            isRestaurant = Validasi.validasiIdRestaurant(database, idRestaurant);
+        } while (isRestaurant == false);
+
         System.out.print("Inputkan jarak restaurant dengan lokasi Anda (km) : ");
         float jarakLokasi = Validasi.validasiAngkaFloatLebih0();
         System.out.println("Daftar Menu :");
@@ -113,6 +118,7 @@ public class MenuCostumer {
             System.out.println("||---------------------------------------------------------||");
             System.out.println("||                     Detail Pemesanan                    ||");
             System.out.println("=============================================================");
+            Fitur.tampilkanTanggalDanWaktu();
             System.out.println("Id Restaurant    : " + idRestaurant);
             System.out.println("Nama Pelanggan   : " + pelanggans.get(0).getNamaUser());
             System.out.println("Alamat Pelanggan : " + pelanggans.get(0).getAlamatUser());

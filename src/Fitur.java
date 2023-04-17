@@ -1,4 +1,6 @@
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Fitur {
 
@@ -40,6 +42,18 @@ public class Fitur {
         }
     }
 
+    public static void tampilkanTanggalDanWaktu() {
+        // Mengambil tanggal dan waktu saat ini
+        LocalDateTime waktuSekarang = LocalDateTime.now();
+
+        // Mengubah format tanggal dan waktu
+        DateTimeFormatter formatTanggalWaktu = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+
+        // Menampilkan tanggal dan waktu saat ini
+        String tanggalWaktu = waktuSekarang.format(formatTanggalWaktu);
+        System.out.println("Waktu Pemesanan : " + tanggalWaktu);
+    }
+
     public static void terimaPesanan(User pelanggan, Pesanan pesanan, Database database) {
         database.tambahPelanggan(pelanggan);
         database.tambahPesanan(pesanan);
@@ -60,7 +74,7 @@ public class Fitur {
         ArrayList<Pembayaran> pembayarans = new ArrayList<Pembayaran>();
         pembayarans = database.getDaftarPembayaran();
         for (int i = 0; i < pembayarans.size(); i++) {
-            System.out.println("Pembayaran : " + i + 1);
+            System.out.println("Pembayaran  : " + (i + 1));
             System.out.println("Total Harga : Rp. " + pembayarans.get(i).getTotalHarga());
             System.out.println("Total Bayar : Rp. " + pembayarans.get(i).getJumlahUang());
             System.out.println("Kembalian   : Rp. " + pembayarans.get(i).getKembalian());

@@ -8,7 +8,7 @@ public class Validasi {
     // ANSI escape code untuk mereset warna
     private static String reset = "\033[0m";
 
-    public static int validasiAngka (int paramBawah, int paramAtas){
+    public static int validasiAngka(int paramBawah, int paramAtas) {
         Scanner scanner = new Scanner(System.in);
         int angka;
 
@@ -21,18 +21,18 @@ public class Validasi {
             }
             angka = scanner.nextInt();
         } while (angka < paramBawah || angka > paramAtas);
-
+        
         return angka;
     }
 
-    public static int validasiAngkaLebih0 (){
+    public static int validasiAngkaLebih0() {
         Scanner scanner = new Scanner(System.in);
         int angka;
 
         do {
             System.out.print("Masukkan angka : ");
             while (!scanner.hasNextInt()) {
-                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset );
+                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset);
                 System.out.print("Masukkan angka : ");
                 scanner.next();
             }
@@ -42,14 +42,14 @@ public class Validasi {
         return angka;
     }
 
-    public static float validasiAngkaFloatLebih0 (){
+    public static float validasiAngkaFloatLebih0() {
         Scanner scanner = new Scanner(System.in);
         float angka;
 
         do {
             System.out.print("Masukkan angka : ");
             while (!scanner.hasNextInt()) {
-                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset );
+                System.out.println(red + "Input harus berupa angka! Silakan coba lagi." + reset);
                 System.out.print("Masukkan angka : ");
                 scanner.next();
             }
@@ -97,5 +97,22 @@ public class Validasi {
             e.printStackTrace();
         }
         return isMenu;
+    }
+
+    public static boolean validasiIdRestaurant(Database database, String idRestaurant) {
+        ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
+        ArrayList<String> idRestaurants = new ArrayList<String>();
+        String idRest;
+        restaurants = database.getDaftarRestaurant();
+        for (int i = 0; i < restaurants.size(); i++) {
+            idRest = restaurants.get(i).getIdRestaurant();
+            idRestaurants.add(idRest);
+        }
+        if (idRestaurants.contains(idRestaurant)) {
+            return true;
+        } else {
+            System.out.println(red + "Masukkan Id Restarant yang terdaftar!" + reset);
+            return false;
+        }
     }
 }
