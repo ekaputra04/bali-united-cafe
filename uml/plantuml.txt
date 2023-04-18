@@ -1,0 +1,208 @@
+UML ini dibuat pada website : https://plantuml.com/
+
+Sintaks yang digunakan sebagai berikut:
+
+@startuml
+class ClearConsole {
+    + void clearConsole()
+}
+
+class Database {
+    - ArrayList<Restaurant> daftarRestaurant = new ArrayList<Restaurant>()
+    - ArrayList<Menu> daftarMenu = new ArrayList<Menu>()
+    - ArrayList<User> daftarPelanggan = new ArrayList<User>()
+    - ArrayList<User> pelangganBeli = new ArrayList<User>()
+    - ArrayList<Pesanan> daftarPesanan = new ArrayList<Pesanan>()
+    - ArrayList<Pesanan> daftarPesananTotal = new ArrayList<Pesanan>()
+    - ArrayList<Pembayaran> daftarPembayaran = new ArrayList<Pembayaran>()
+    ==
+    + void tambahRestaurant(Restaurant restaurant)
+    + void hapusRestaurant()
+    + ArrayList<Restaurant> getDaftarRestaurant()
+    + void tambahMenu(Menu menu)
+    + void hapusMenu()
+    + ArrayList<Menu> getDaftarMenu() 
+    + void tambahPelanggan(User pelanggan) 
+    + void hapusPelanggan() 
+    + ArrayList<User> getDaftarPelanggan() 
+    + void tambahPelangganBeli(User pelanggan) 
+    + void hapusPelangganBeli() 
+    + ArrayList<User> getDaftarPelangganBeli() 
+    + void tambahPesanan(Pesanan pesanan) 
+    + void hapusPesanan() 
+    + ArrayList<Pesanan> getDaftarPesanan() 
+    + void tambahPesananTotal(Pesanan pesanan) 
+    + void hapusPesananTotal() 
+    + ArrayList<Pesanan> getDaftarPesananTotal() 
+    + void tambahPembayaran(Pembayaran pembayaran) 
+    + void hapusPembayaran() 
+    + ArrayList<Pembayaran> getDaftarPembayaran() 
+}
+
+class EditFileMenu {
+    - String red = "\033[31m";
+    - String reset = "\033[0m";
+    ==
+    + void bacaFileMenu(Database database)
+    + void isiFileMenu(String idMenu, String namaMenu, int hargaMenu) 
+    + void hapusFileMenu(int indexToDelete)
+}
+
+class EditFileRestaurant {
+    - String red = "\033[31m";
+    - String reset = "\033[0m";
+    ==
+    + void bacaFileRestaurant(Database database)
+    + isiFileRestaurant(String id, String nama, String alamat)
+    + void hapusFileRestaurant(int indexToDelete)
+}
+
+class Fitur {
+    - String red = "\033[31m";
+    - String reset = "\033[0m";
+    ==
+    + void tampilkanRestaurant(Database database)
+    + void tampilkanMenu(Database database)
+    + void tampilkanTanggalDanWaktu()
+    + void tampilkanDaftarPesanan(Database database)
+    + void tampilkanDaftarPesananTotal(Database database)
+    + void tampilkanDaftarPembayaran(Database database)
+    + void tampilkanDaftarPelanggan(Database database)
+}
+
+class Login{
+    - String red = "\033[31m";
+    - String reset = "\033[0m";
+    ==
+    + void login(Database database)
+    + void verifikasiAdmin(Database database)
+    + void loginAdmin(Database database)
+    + void verifikasiCostumer(Database database)
+    + void loginCostumer(Database database)
+}
+
+class Main {
+    + void header()
+    + void main(String[] args)
+}
+
+class Menu {
+    - String idMenu
+    - String nama
+    - int harga
+    ==
+    + Menu(String idMenu, String nama, int harga)
+    + String getIdMenu()
+    + String getNama()
+    + String getHarga()
+}
+
+class MenuAdmin {
+    - Scanner input = new Scanner(System.in)
+    - String red = "\033[31m"
+    - String reset = "\033[0m";
+    ==
+    + void adminLihatRestaurant(Database database) 
+    + void adminTambahRestaurant(Database database)
+    + void adminHapusRestaurant(Database database)
+    + void adminLihatMenuRestaurant(Database database)
+    + void adminTambahMenuRestaurant(Database database)
+    + void adminHapusMenuRestaurant(Database database)
+    + void adminLihatPelanggan(Database database)
+}
+
+class MenuCostumer {
+    - Scanner input = new Scanner(System.in)
+    - String red = "\033[31m"
+    - String reset = "\033[0m"
+    ==
+    + void customerLihatRestaurant(Database database)
+    + void customerLihatMenu(Database database)
+    + void customerBuatPesanan(Database database)
+    + customerLihatTransaksi(Database database)
+}
+
+class Pembayaran {
+    - ArrayList<Pesanan> pesanans = new ArrayList<Pesanan>();
+    - int totalHarga;
+    - int jumlahUang;
+    ==
+    + Pembayaran(ArrayList<Pesanan> pesanans, int totalHarga, int jumlahUang)
+    + ArrayList<Pesanan> getPesanans()
+    + int getTotalHarga()
+    + int getJumlahUang()
+    + int getKembalian()
+}
+
+class Pesanan {
+    - Menu menu
+    - int jumlah
+    ==
+    + Pesanan(Menu menu, int jumlah)
+    + Menu getMenu()
+    + int getJumlah()
+    + int getTotalHarga()
+}
+
+class Restaurant {
+    - String idRestaurant
+    - String name
+    - String address
+    ==
+    + Restaurant(String idRestaurant, String name, String address)
+    + void setIdRestaurant(String idRestaurant)
+    + void setName(String name)
+    + void setAddress(String address)
+    + String getIdRestaurant()
+    + String getName()
+    + String getAddress()
+}
+
+class User {
+    - String namaUser
+    - String AlamatUser
+    ==
+    + User(String namaUser, String alamatUser)
+    + String getNamaUser()
+    + String getAlamatUser()
+}
+
+class Validasi {
+    - String red = "\033[31m"
+    - String reset = "\033[0m"
+    ==
+    + int validasiAngka(int paramBawah, int paramAtas)
+    + int validasiAngkaLebih0()
+    + float validasiAngkaFloatLebih0()
+    + boolean validasiRestaurant(String idRestaurant, String namaRestaurant)
+    + boolean validasiMenu(String idMenu, String namaMenu)
+    + boolean validasiIdRestaurant(Database database, String idRestaurant)
+}
+
+class VerifikasiAdmin {
+    - String fileName
+    ==
+    + VerifikasiAdmin(String fileName)
+    + boolean verifyAdmin(String username, String password)
+}
+
+ClearConsole "0..1" -- "1..*" Main : menghapus layar
+Main "0..1" .. "0..1" Login : login user
+Database "0..1" -- "0..1" Main : menyimpan data
+Database "0..n" -- "0..1" Restaurant : menyimpan data
+Database "0..n" -- "0..1" Menu : menyimpan data
+Database "0..n" -- "0..1" User : menyimpan data
+Database "0..n" -- "0..1" Pesanan : menyimpan data
+Database "0..n" -- "0..1" Pembayaran : menyimpan data
+EditFileMenu "0..1" -- "0..1" Main : membaca FileMenu.txt
+EditFileMenu "0..1" -- "0..*" MenuAdmin : menambah dan menghapus FileMenu.txt
+EditFileRestaurant "0..1" -- "0..1" Main : membaca FileRestaurant.txt
+EditFileRestaurant "0..1" -- "0..*" MenuAdmin : menambah dan menghapus FileRestaurant.txt
+Fitur "0..1" -- "0..*" MenuAdmin : menampilkan restaurant, menu, dan pelanggan
+Fitur "0..1" -- "0..*" MenuCostumer : menamapilkan restaurant, menu, tanggal dan waktu, pesanan, dan pembayaran
+Login "0..*" -- "0..1" MenuAdmin : login admin
+Login "0..*" -- "0..1" MenuCostumer : login customer
+Validasi "0..1" -- "0..*" MenuAdmin : validasi angka, restaurant, menu
+Validasi "0..1" -- "0..*" MenuCostumer : validasi angka, idRestaurant
+VerifikasiAdmin "0..1" -- "0..1" Login : verifikasi admin
+@enduml
