@@ -10,6 +10,7 @@ public class Fitur {
     private static String reset = "\033[0m";
 
     public static void tampilkanRestaurant(Database database) {
+        // method ini berguna untuk menampilkan data restaurant yang tersimpan dalam ArrayList daftarResturant dalam objek database
         ArrayList<Restaurant> restaurants = new ArrayList<Restaurant>();
         restaurants = database.getDaftarRestaurant();
         if (restaurants.isEmpty()) {
@@ -27,6 +28,7 @@ public class Fitur {
     }
 
     public static void tampilkanMenu(Database database) {
+        // method ini berguna untuk menampilkan data menu yang tersimpan dalam ArrayList daftarMenu dalam objek database
         ArrayList<Menu> menus = database.getDaftarMenu();
         menus = database.getDaftarMenu();
         if (menus.isEmpty()) {
@@ -43,6 +45,7 @@ public class Fitur {
     }
 
     public static void tampilkanTanggalDanWaktu() {
+        // method ini digunakan untuk menampilkan tanggal dan waktu saat customer melakukan pemesanan
         // Mengambil tanggal dan waktu saat ini
         LocalDateTime waktuSekarang = LocalDateTime.now();
 
@@ -55,6 +58,7 @@ public class Fitur {
     }
 
     public static void tampilkanDaftarPesanan(Database database) {
+        // method ini berguna untuk menampilkan data pesanan sementara yang tersimpan dalam ArrayList daftarPesanan dalam objek database
         ArrayList<Pesanan> daftarPesanan = database.getDaftarPesanan();
         System.out.println("Daftar Pesanan :");
         for (int i = 0; i < daftarPesanan.size(); i++) {
@@ -65,6 +69,7 @@ public class Fitur {
     }
 
     public static void tampilkanDaftarPesananTotal(Database database) {
+        // method ini berguna untuk menampilkan data pesanan total yang tersimpan dalam ArrayList daftarPesananTotal dalam objek database
         ArrayList<Pesanan> daftarPesananTotal = database.getDaftarPesananTotal();
         System.out.println("Daftar Pesanan :");
         if (daftarPesananTotal.isEmpty()) {
@@ -80,6 +85,7 @@ public class Fitur {
     }
 
     public static void tampilkanDaftarPembayaran(Database database) {
+        // method ini berguna untuk menampilkan data pembayaran yang tersimpan dalam ArrayList daftarPembayaran dalam objek database
         ArrayList<Pembayaran> pembayarans = new ArrayList<Pembayaran>();
         pembayarans = database.getDaftarPembayaran();
         if (pembayarans.isEmpty()) {
@@ -97,6 +103,7 @@ public class Fitur {
     }
 
     public static void tampilkanDaftarPelanggan(Database database) {
+        // method ini berguna untuk menampilkan data pelanggan yang tersimpan dalam ArrayList daftarPelanggan dalam objek database
         ArrayList<User> daftarPelanggan = database.getDaftarPelanggan();
         System.out.println("Daftar Pelanggan :");
         if (daftarPelanggan.isEmpty()) {

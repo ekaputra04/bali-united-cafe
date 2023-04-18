@@ -2,6 +2,7 @@ import java.util.*;
 
 public class ClearConsole {
     public static void clearConsole(){
+        // method ini digunakan untuk membersihkan console
         Scanner input = new Scanner(System.in);
         input.nextLine();
         try {

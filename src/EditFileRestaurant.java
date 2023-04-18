@@ -7,6 +7,7 @@ public class EditFileRestaurant {
     private static String reset = "\033[0m";
 
     public static void bacaFileRestaurant(Database database) {
+        // method ini digunakan untuk membaca data dari FileRestaurant.txt kemudian menambahkannya dalam ArrayList daftarRestaurant dalam objek database
         database.hapusRestaurant();
         try {
             BufferedReader reader = new BufferedReader(new FileReader("src/FileRestaurant.txt"));
@@ -33,8 +34,7 @@ public class EditFileRestaurant {
     }
 
     public static void isiFileRestaurant(String id, String nama, String alamat) {
-
-        // Menyimpan data restoran ke dalam file FileREstaurant.txt
+        // method isi berguna untuk menyimpan data restoran baru ke dalam file FileREstaurant.txt
         try {
             FileWriter writer = new FileWriter("src/FileRestaurant.txt", true);
             writer.write(id + "," + nama + "," + alamat + "\n");
@@ -49,8 +49,8 @@ public class EditFileRestaurant {
     }
 
     public static void hapusFileRestaurant(int indexToDelete) {
+        // method ini digunakan untuk menghapus data salah satu restaurant dalam FileRestaurant.txt
         String fileName = "src/FileRestaurant.txt";
-
         try {
             // membaca file
             File inputFile = new File(fileName);
@@ -93,7 +93,6 @@ public class EditFileRestaurant {
                 System.out.println(red + "Gagal menghapus file" + reset);
                 System.out.println("-------------------------------------------------------------");
             }
-
         } catch (IOException e) {
             System.out.println(red + "Terjadi kesalahan: " + e.getMessage() + reset);
             System.out.println("-------------------------------------------------------------");

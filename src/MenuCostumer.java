@@ -8,6 +8,7 @@ public class MenuCostumer {
     private static String reset = "\033[0m";
 
     public static void customerLihatRestaurant(Database database) {
+        // method ini berguna untuk menampilkan daftar restaurant yang tersimpan dalam objek database
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                      MENU COSTUMER                      ||");
@@ -18,6 +19,7 @@ public class MenuCostumer {
     }
 
     public static void customerLihatMenu(Database database) {
+        // method ini berguna untuk menampilkan daftar menu yang tersimpan dalam objek database
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                      MENU COSTUMER                      ||");
@@ -28,6 +30,7 @@ public class MenuCostumer {
     }
 
     public static void customerBuatPesanan(Database database) {
+        // method ini berguna untuk menampung data pesanan dan pembayaran yang dilakukan customer
         ArrayList<Menu> menus = new ArrayList<Menu>();
         ArrayList<Pesanan> pesanans = new ArrayList<Pesanan>();
         boolean isRestaurant;
@@ -41,6 +44,7 @@ public class MenuCostumer {
         System.out.println("=============================================================");
         System.out.println("Daftar Restaurant : ");
         Fitur.tampilkanRestaurant(database);
+        // perulangan do-while agar id restaurant yang diinputkan harus sesuai dengan id yang terdaftar
         do {
             System.out.print("Pilih Id Restaurant yang akan dikunjungi : ");
             idRestaurant = input.nextLine();
@@ -107,6 +111,8 @@ public class MenuCostumer {
             } while (jumlahUang < totalHarga);
             System.out.println(red + "Kembalian : " + (jumlahUang - totalHarga) + reset);
             System.out.println("-------------------------------------------------------------");
+
+            // menambahkan pembayaran ke objek database
             Pembayaran pembayaran = new Pembayaran(pesanans, totalHarga, jumlahUang);
             database.tambahPembayaran(pembayaran);
             System.out.println("Pembayaran telah diterima.");
@@ -143,6 +149,7 @@ public class MenuCostumer {
     }
 
     public static void customerLihatTransaksi(Database database) {
+        // method ini berguna untuk menampilkan daftar riwayat transaksi yang tersimpan dalam objek database
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                      MENU COSTUMER                      ||");

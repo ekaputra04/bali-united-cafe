@@ -1,7 +1,6 @@
 import java.util.*;
 
 public class Login {
-
     private static Scanner input = new Scanner(System.in);
     // ANSI escape code untuk tulisan merah
     private static String red = "\033[31m";
@@ -9,6 +8,7 @@ public class Login {
     private static String reset = "\033[0m";
 
     public static void login(Database database) {
+        // method ini berguna sebagai tampilan awal program dan pilihan login sebagai admin atau customer
         int ruleUser;
         System.out.println("=============================================================");
         System.out.println("||                                                         ||");
@@ -26,11 +26,11 @@ public class Login {
         System.out.println("||---------------------------------------------------------||");
         System.out.println("|| Login sebagai:                                          ||");
         System.out.println("|| [1] Admin                                               ||");
-        System.out.println("|| [2] Costumer                                            ||");
+        System.out.println("|| [2] Customer                                            ||");
         System.out.println("=============================================================");
         System.out.println("Masukkan pilihan Anda : ");
+        // user hanya boleh menginputkan angka 1 atau 2, karena akan divalidasi
         ruleUser = Validasi.validasiAngka(1, 2);
-
         if (ruleUser == 1) {
             verifikasiAdmin(database);
         } else if (ruleUser == 2) {
@@ -39,12 +39,13 @@ public class Login {
     }
 
     public static void verifikasiAdmin(Database database) {
+        // method ini berguna untuk mengecek apakah user sebagai admin atau tidak
+        // method akan melakukan validasi terhadap FileAdmin.txt, jika sesuai maka login admin berhasil
         VerifikasiAdmin verifikasiAdmin = new VerifikasiAdmin("src/FileAdmin.txt");
         Main.header();
         System.out.println("||---------------------------------------------------------||");
         System.out.println("||                     VERIFIKASI ADMIN                    ||");
         System.out.println("=============================================================");
-
         // Input username dan password
         System.out.print("Masukkan Username: ");
         String username = input.nextLine();
@@ -66,6 +67,7 @@ public class Login {
     }
 
     public static void loginAdmin(Database database) {
+        // method ini berguna menampilkan opsi program yang dapat dijalankan oleh admin
         while (true) {
             int menuAdmin;
             Main.header();
@@ -85,6 +87,7 @@ public class Login {
             System.out.println("|| [9] Keluar Program                                      ||");
             System.out.println("=============================================================");
             System.out.println("Masukkan pilihan Anda : ");
+            // user hanya boleh menginputkan angka antara 1 hingga 9, karena akan divalidasi
             menuAdmin = Validasi.validasiAngka(1, 9);
 
             if (menuAdmin == 1) {
@@ -111,13 +114,14 @@ public class Login {
     }
 
     public static void verifikasiCostumer(Database database) {
+        // method ini berguna untuk mengambil data dari pelanggan berupa nama dan alamat
         String nama;
         String alamat;
         database.hapusPembayaran();
         database.hapusPesananTotal();
         Main.header();
         System.out.println("||---------------------------------------------------------||");
-        System.out.println("||                   VERIFIKASI COSTUMER                   ||");
+        System.out.println("||                   VERIFIKASI CUSTOMER                   ||");
         System.out.println("=============================================================");
         System.out.print("Masukkan Nama Anda : ");
         nama = input.nextLine();
@@ -133,11 +137,12 @@ public class Login {
     }
 
     public static void loginCostumer(Database database) {
+        // method ini berguna menampilkan opsi program yang dapat dijalankan oleh customer
         while (true) {
             int menuCostumer;
             Main.header();
             System.out.println("||---------------------------------------------------------||");
-            System.out.println("||                       MENU COSTUMER                     ||");
+            System.out.println("||                       MENU CUSTOMER                     ||");
             System.out.println("||---------------------------------------------------------||");
             System.out.println("|| Silahkan Pilih Menu Program:                            ||");
             System.out.println("|| [1] Lihat Daftar Restaurant                             ||");
@@ -149,6 +154,7 @@ public class Login {
             System.out.println("|| [6] Keluar Program                                      ||");
             System.out.println("=============================================================");
             System.out.println("Masukkan pilihan Anda : ");
+            // user hanya boleh menginputkan angka antara 1 hingga 9, karena akan divalidasi
             menuCostumer = Validasi.validasiAngka(1, 6);
 
             if (menuCostumer == 1) {

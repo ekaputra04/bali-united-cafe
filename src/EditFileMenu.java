@@ -8,11 +8,11 @@ public class EditFileMenu {
     private static String reset = "\033[0m";
 
     public static void bacaFileMenu(Database database) {
+        // method ini digunakan untuk membaca data dari FileMenu.txt kemudian menambahkannya dalam ArrayList daftarMenu dalam objek database
         database.hapusMenu();
         try {
             File file = new File("src/FileMenu.txt");
             Scanner scanner = new Scanner(file);
-
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] data = line.split(",");
@@ -32,7 +32,7 @@ public class EditFileMenu {
     }
 
     public static void isiFileMenu(String idMenu, String namaMenu, int hargaMenu) {
-        // Menyimpan data restoran ke dalam file FileMenu.txt
+        // method ini berguna untuk menyimpan data menu ke dalam file FileMenu.txt
         try {
             FileWriter writer = new FileWriter("src/FileMenu.txt", true);
             writer.write(idMenu + "," + namaMenu + "," + hargaMenu + "\n");
@@ -47,8 +47,8 @@ public class EditFileMenu {
     }
 
     public static void hapusFileMenu(int indexToDelete) {
+        // method ini digunakan untuk menghapus data salah satu menu dalam FileMenu.txt
         String fileName = "src/FileMenu.txt";
-
         try {
             // membaca file
             File inputFile = new File(fileName);
@@ -59,7 +59,7 @@ public class EditFileMenu {
             File tempFile = new File("temp2.txt");
             FileWriter writer = new FileWriter(tempFile);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
-
+            
             String line;
             int currentIndex = 1;
 

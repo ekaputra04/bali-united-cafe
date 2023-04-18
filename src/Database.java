@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
 public class Database {
-
+    // semua data yang digunakan dalam program ini disimpan dalam class database
+    // masing-masing data akan disimpan dalam ArrayList yang sesuai
+    // database inilah yang akan dijadikan objek dan menjadi parameter dalam setiap method
+    
     private ArrayList<Restaurant> daftarRestaurant = new ArrayList<Restaurant>();
     private ArrayList<Menu> daftarMenu = new ArrayList<Menu>();
     private ArrayList<User> daftarPelanggan = new ArrayList<User>();
