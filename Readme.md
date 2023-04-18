@@ -30,6 +30,12 @@ Restaurant dibuat mempunyai cabang pada daerah-daerah tertentu, tidak hanya di G
 
 Menu dari semua restaurant sama. Tetapi dapat ditambahkan maupun dihapus hanya oleh Admin, ketika restaurant satu menunya dihapus ataupun ditambah, otomatis akan berdampak ke cabang restaurant lainnya.
 
+## UML Program
+
+![App Screenshot](./uml/uml.jpg)
+
+Untuk melihat UML secara lebih jelas, silahkan kunjungi folder uml.
+
 ## Alur Kerja program
 
 Ketika program mulai dijalankan, otomatis akan menerima data dari FileRestaurant.txt dan FileMenu.txt sebagai database dari proses running sebelumnya. Sehingga ArrayList dari restaurant dan menu akan terisi data. 
