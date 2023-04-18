@@ -8,7 +8,8 @@ public class Login {
     private static String reset = "\033[0m";
 
     public static void login(Database database) {
-        // method ini berguna sebagai tampilan awal program dan pilihan login sebagai admin atau customer
+        // method ini berguna sebagai tampilan awal program dan pilihan login sebagai
+        // admin atau customer
         int ruleUser;
         System.out.println("=============================================================");
         System.out.println("||                                                         ||");
@@ -40,7 +41,8 @@ public class Login {
 
     public static void verifikasiAdmin(Database database) {
         // method ini berguna untuk mengecek apakah user sebagai admin atau tidak
-        // method akan melakukan validasi terhadap FileAdmin.txt, jika sesuai maka login admin berhasil
+        // method akan melakukan validasi terhadap FileAdmin.txt, jika sesuai maka login
+        // admin berhasil
         VerifikasiAdmin verifikasiAdmin = new VerifikasiAdmin("src/FileAdmin.txt");
         Main.header();
         System.out.println("||---------------------------------------------------------||");
@@ -108,6 +110,13 @@ public class Login {
                 ClearConsole.clearConsole();
                 Login.login(database);
             } else {
+                ClearConsole.clearConsole();
+                System.out.println("=============================================================");
+                System.out.println("||                                                         ||");
+                System.out.println("||                    BALI UNITED CAFE                     ||");
+                System.out.println("||                ~ Sampai Jumpa Kembali ~                 ||");
+                System.out.println("||                                                         ||");
+                System.out.println("=============================================================");
                 System.exit(0);
             }
         }
@@ -137,7 +146,8 @@ public class Login {
     }
 
     public static void loginCostumer(Database database) {
-        // method ini berguna menampilkan opsi program yang dapat dijalankan oleh customer
+        // method ini berguna menampilkan opsi program yang dapat dijalankan oleh
+        // customer
         while (true) {
             int menuCostumer;
             Main.header();
@@ -169,6 +179,13 @@ public class Login {
                 ClearConsole.clearConsole();
                 login(database);
             } else if (menuCostumer == 6) {
+                ClearConsole.clearConsole();
+                System.out.println("=============================================================");
+                System.out.println("||                                                         ||");
+                System.out.println("||                    BALI UNITED CAFE                     ||");
+                System.out.println("||                ~ Sampai Jumpa Kembali ~                 ||");
+                System.out.println("||                                                         ||");
+                System.out.println("=============================================================");
                 System.exit(0);
             }
         }
